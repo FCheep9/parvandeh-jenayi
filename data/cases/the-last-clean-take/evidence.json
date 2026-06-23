@@ -1,0 +1,66 @@
+{
+  "ev-me-note": {
+    "id": "ev-me-note",
+    "name": "Medical examiner's field note",
+    "slot": "ev-me-note",
+    "glyph": "🗎",
+    "summary": "First read of the scene.",
+    "description": "A page torn from the ME's pad, handed to you at the door.",
+    "notes": [
+      "Lividity <b>fixed in a pattern inconsistent</b> with how the body is posed in the booth.",
+      "Core/tissue readings flagged: <b>post-mortem interval inconsistent with the apparent scene</b>.",
+      "Plain words: the scene says she died here, last night. The body isn't so sure."
+    ],
+    "clue": "pmi-wrong"
+  },
+  "ev-waveform": {
+    "id": "ev-waveform",
+    "name": "The “new” release vs. an archival master",
+    "slot": "",
+    "glyph": "🎧",
+    "summary": "Two recordings of the same voice.",
+    "description": "Junie's words won't leave you: nobody breathes that evenly. Put the brand-new release up against a recording from last year and look for yourself.",
+    "tool": "waveform"
+  },
+  "ev-insulin-pen": {
+    "id": "ev-insulin-pen",
+    "name": "Della's insulin pen",
+    "slot": "ev-insulin-pen",
+    "glyph": "💉",
+    "summary": "Cap off. Recently used.",
+    "description": "A smart insulin pen from the booth desk.",
+    "notes": [
+      "Della was Type-1 diabetic.",
+      "Dose log shows a <b>normal mealtime dose</b> — but the kitchen is untouched and a food delivery sat uncollected at her door.",
+      "Insulin for a meal she never reached: the makings of a slow, accidental low — not an overdose."
+    ],
+    "clue": "insulin-dose"
+  },
+  "ev-contract": {
+    "id": "ev-contract",
+    "name": "Aldercrest contract",
+    "slot": "ev-contract",
+    "glyph": "📄",
+    "summary": "Tabbed to a single clause.",
+    "description": "Della's deal with Aldercrest Publishing, read so often the tab is worn soft.",
+    "notes": [
+      "<b>Voice Continuation Rider.</b>",
+      "Deliver every title <i>while alive</i> → the synthetic-voice rights and a retirement clause stay with Della's estate (her written wish: <i>my voice dies when I do</i>).",
+      "Die <i>before</i> delivery is accepted → the rights revert to Aldercrest <b>in perpetuity</b>. Someone could make her read forever."
+    ],
+    "clue": "rights-rider"
+  },
+  "ev-harddrives": {
+    "id": "ev-harddrives",
+    "name": "The master drives",
+    "slot": "ev-harddrives",
+    "glyph": "💽",
+    "summary": "A folder modified this week.",
+    "description": "The wall of labeled master drives from the control room.",
+    "notes": [
+      "Decades of Della's recorded masters, meticulously kept.",
+      "A folder — 'DELLA — NEW' — carries timestamps from <b>this week</b>, long after she supposedly stopped working.",
+      "Whatever 'new Della' is, it is being made <i>here</i>."
+    ]
+  }
+}

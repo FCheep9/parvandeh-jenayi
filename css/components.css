@@ -1,0 +1,137 @@
+/* ============================================================
+   COMPONENTS — buttons, cards, forms, callouts, clue cards.
+   ============================================================ */
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer;
+  background: var(--panel-2); color: var(--ink); border: 1px solid var(--line);
+  padding: .6rem 1.1rem; border-radius: 8px; font-size: .95rem; transition: .15s; }
+.btn:hover { border-color: var(--accent); }
+.btn:disabled { opacity: .45; cursor: not-allowed; border-color: var(--line); }
+.btn-primary { background: var(--accent); color: #14110a; border-color: var(--accent); font-weight: 600; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { background: transparent; }
+.btn-danger { border-color: var(--danger); color: var(--danger); }
+.btn-sm { padding: .35rem .7rem; font-size: .82rem; }
+.btn-block { width: 100%; justify-content: center; }
+
+/* kicker / labels */
+.kicker { letter-spacing: .35em; text-transform: uppercase; font-size: .68rem; color: var(--accent);
+  font-family: var(--mono); }
+.label { font-family: var(--mono); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.fa { font-family: "Vazirmatn", Tahoma, sans-serif; direction: rtl; }
+
+/* generic card */
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; cursor: pointer; transition: .15s; display: flex; flex-direction: column; }
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card.selectable.sel { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 40%, transparent); }
+.card .thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--panel-2); display: block; }
+.card .card-pad { padding: .7rem .8rem; }
+.card .card-title { font-weight: 600; font-size: .98rem; }
+.card .card-sub { color: var(--muted); font-size: .82rem; margin-top: .15rem; line-height: 1.4; }
+.card.locked { opacity: .6; cursor: default; }
+.card.locked:hover { transform: none; border-color: var(--line); }
+.card .pill { display: inline-block; font-family: var(--mono); font-size: .64rem; letter-spacing: .12em;
+  text-transform: uppercase; padding: .12rem .45rem; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.card .pill.done { color: var(--good); border-color: color-mix(in srgb, var(--good) 50%, var(--line)); }
+
+/* portrait */
+.portrait { border-radius: 50%; object-fit: cover; border: 2px solid var(--line); background: var(--panel-2); }
+.portrait.pick { cursor: pointer; width: 80px; height: 80px; }
+.portrait.pick.sel { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.person-row { display: flex; gap: .8rem; align-items: center; }
+
+/* forms */
+.field { display: flex; flex-direction: column; gap: .35rem; margin-bottom: 1rem; text-align: left; }
+.field > span { font-size: .85rem; color: var(--muted); }
+input[type="text"], textarea, select {
+  background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+  padding: .6rem .7rem; font-family: var(--sans); font-size: 1rem; }
+textarea { min-height: 80px; resize: vertical; }
+input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+
+/* option cards (theme/specialty/difficulty) */
+.opt { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1rem; cursor: pointer; transition: .15s; }
+.opt:hover { border-color: var(--accent); }
+.opt.sel { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.opt h4 { margin: 0 0 .25rem; font-size: 1.02rem; }
+.opt p { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.45; }
+.opt .swatches { display: flex; gap: .3rem; margin-top: .6rem; }
+.opt .sw { width: 22px; height: 22px; border-radius: 4px; border: 1px solid rgba(255,255,255,.15); }
+
+/* tutorial callout */
+.callout { border-left: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 8%, var(--panel));
+  padding: .7rem .9rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: .92rem; color: var(--ink-dim); }
+.callout .label { color: var(--accent-2); display: block; margin-bottom: .2rem; }
+
+/* requirement / gate hint */
+.gate-hint { color: var(--muted); font-size: .85rem; font-style: italic; }
+
+/* forensic notes */
+.notes { list-style: none; padding: 0; margin: .8rem 0; }
+.notes li { padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 8px; margin-bottom: .5rem;
+  background: var(--panel-2); font-size: .92rem; line-height: 1.5; }
+.notes li b { color: var(--accent); }
+
+/* speaker line */
+.speaker { display: flex; gap: .7rem; align-items: flex-start; }
+.speaker .portrait { width: 46px; height: 46px; flex: none; }
+.speaker .who { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.bubble { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: .7rem .9rem; line-height: 1.6; }
+.bubble.me { border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+
+/* clue card on the board */
+.clue { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .7rem .8rem;
+  cursor: pointer; transition: .15s; position: relative; }
+.clue:hover { border-color: var(--accent); }
+.clue.sel { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.clue.hintable { animation: glow 1.6s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-2) 45%, transparent); } }
+.clue .clue-ico { font-size: 1.1rem; }
+.clue .clue-title { font-weight: 600; font-size: .92rem; margin: .2rem 0; }
+.clue .clue-src { color: var(--muted); font-size: .74rem; font-family: var(--mono); }
+.clue.shake { animation: shake .4s; }
+@keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+.conclusion { background: color-mix(in srgb, var(--accent) 10%, var(--panel)); border: 1px solid var(--accent);
+  border-radius: 10px; padding: .8rem .9rem; }
+.conclusion .clue-title { color: var(--ink); }
+
+/* waveform viewer */
+.wave-tool { display: flex; flex-direction: column; gap: 1rem; }
+.wave-row { border: 1px solid var(--line); border-radius: 10px; padding: .8rem; background: var(--panel); }
+.wave-row h4 { margin: 0 0 .5rem; font-size: .95rem; display: flex; justify-content: space-between; align-items: center; }
+.wave-canvas { width: 100%; height: 90px; display: block; background: var(--bg-2); border-radius: 6px; border: 1px solid var(--line); }
+.wave-note { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+.wave-note.flag { color: var(--accent); }
+
+/* notebook */
+.note-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+.note-item { border: 1px solid var(--line); border-radius: 8px; padding: .5rem .7rem; font-size: .9rem; background: var(--panel-2); }
+.note-item .by { font-family: var(--mono); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); }
+.note-item.hint .by { color: var(--accent); }
+
+/* role chips */
+.role-chip { font-family: var(--mono); font-size: .72rem; padding: .25rem .6rem; border-radius: 999px;
+  border: 1px solid var(--line); color: var(--muted); cursor: pointer; }
+.role-chip.active { color: var(--ink); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+
+/* empty state */
+.empty { text-align: center; color: var(--muted); padding: 3rem 1rem; font-style: italic; }
+
+/* cinematic */
+.cine { position: fixed; inset: 0; z-index: 120; background: #000; color: #eee; display: flex;
+  flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; }
+.cine-text { max-width: 640px; font-size: clamp(1.1rem, 3vw, 1.5rem); line-height: 1.7; min-height: 5em; }
+.cine-sub { color: var(--accent); font-family: var(--mono); letter-spacing: .15em; margin-top: 1.4rem; min-height: 1.4em; }
+.cine canvas { width: min(640px, 90vw); height: 80px; margin-top: 1.6rem; }
+.cine .skip { position: absolute; bottom: 24px; right: 24px; }
+
+/* hr */
+.divider { border: 0; border-top: 1px solid var(--line); margin: 1.4rem 0; }
+.muted { color: var(--muted); }
+.small { font-size: .85rem; }
+.tcenter { text-align: center; }
+.mt { margin-top: 1rem; } .mt2 { margin-top: 2rem; } .mb { margin-bottom: 1rem; }

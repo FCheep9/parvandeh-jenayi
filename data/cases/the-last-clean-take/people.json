@@ -1,0 +1,57 @@
+{
+  "junie": {
+    "id": "junie",
+    "name": "Junie Okafor",
+    "role": "Junior narrator · Della's protégé",
+    "intro": "Red-eyed, hugging a paper coffee cup. “You're the one who knew her voice, aren't you. From the books.”",
+    "dialogue": [
+      { "id": "j1", "topic": "How are you holding up?",
+        "line": "She taught me everything. She'd run my pickups at midnight just so I'd sound less scared. I keep waiting for her to walk in and fix my breathing." },
+      { "id": "j2", "topic": "Did you notice anything strange about the new books?", "press": true,
+        "line": "Can I tell you something stupid? The <i>breaths</i>. In the new books. Nobody breathes that evenly reading aloud. I thought I was grieving wrong. But you hear it too, don't you.",
+        "reveals": { "flag": "audio-thread" } },
+      { "id": "j3", "topic": "Where were you that night?",
+        "line": "Recording pickups, like always — I'm here at odd hours. My keycard's all over the logs. I know how that looks. I didn't do anything." }
+    ]
+  },
+  "theo": {
+    "id": "theo",
+    "name": "Theo Marsh",
+    "role": "Audio engineer · co-owner of Saltwire",
+    "intro": "Composed. Too composed. “She's finally resting. She'd been so tired.”",
+    "dialogue": [
+      { "id": "t1", "topic": "What happened to Della?",
+        "line": "Her heart, they think. She'd worked herself to the bone <i>finishing the series</i>. She wouldn't stop." },
+      { "id": "t2", "topic": "When did you last hear from her?", "press": true,
+        "line": "We talked all the time. She sent me notes just last week — little voice memos, you know how she was.",
+        "reveals": { "flag": "forged-checkins" } },
+      { "id": "t3", "topic": "Tell me about the new recordings.",
+        "line": "We finished what she started. It's what she <i>wanted</i>. Don't make it ugly." }
+    ]
+  },
+  "priya": {
+    "id": "priya",
+    "name": "Priya Anand",
+    "role": "Della's literary & voice agent",
+    "intro": "She ends a call and turns, smooth as glass. “I'm handling the estate. Everything's in order.”",
+    "dialogue": [
+      { "id": "p1", "topic": "What's at stake with this release?",
+        "line": "The biggest launch of her career. Posthumous, now, I suppose. The numbers will be… enormous." },
+      { "id": "p2", "topic": "Tell me about the contract.", "press": true,
+        "line": "Standard terms. I really can't discuss the estate. Della knew exactly what she signed.",
+        "reveals": { "flag": "contract-dodge" } }
+    ]
+  },
+  "gareth": {
+    "id": "gareth",
+    "name": "Gareth Vale (via assistant)",
+    "role": "Acquisitions director · Aldercrest Publishing",
+    "intro": "He's abroad; his assistant speaks for him, bright and rehearsed.",
+    "dialogue": [
+      { "id": "g1", "topic": "Why hold the memorial-premiere now?",
+        "line": "[Assistant] Mr. Vale is at the Frankfurt book fair. He said the world should hear her one last time. The event's in thirty-six hours — he insisted." },
+      { "id": "g2", "topic": "Did Aldercrest doubt the new recordings?",
+        "line": "[Assistant] I — I really couldn't say. There was an internal note. Something about whether the dailies 'sounded like her.' I shouldn't have said that." }
+    ]
+  }
+}

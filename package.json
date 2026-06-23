@@ -1,0 +1,15 @@
+{
+  "name": "parvandeh-jenayi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "پرونده جنایی — an interactive fair-play detective game (static, no build).",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "fetch-media": "node tools/fetch-media.mjs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jsdom": "^22.1.0"
+  }
+}

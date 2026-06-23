@@ -1,0 +1,175 @@
+{
+  "people": {
+    "della": {
+      "portrait": "https://randomuser.me/api/portraits/women/68.jpg"
+    },
+    "theo": {
+      "portrait": "https://randomuser.me/api/portraits/men/46.jpg"
+    },
+    "priya": {
+      "portrait": "https://randomuser.me/api/portraits/women/52.jpg"
+    },
+    "gareth": {
+      "portrait": "https://randomuser.me/api/portraits/men/76.jpg"
+    },
+    "junie": {
+      "portrait": "https://randomuser.me/api/portraits/women/29.jpg"
+    }
+  },
+  "slots": {
+    "loc-saltwire-ext": {
+      "url": "https://api.openverse.org/v1/images/b2b26f64-4144-42f5-8964-ec44cf2948b3/thumb/",
+      "credit": {
+        "title": "Toutorsky Mansion",
+        "creator": "dbking",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/65193799@N00/3708878698"
+      }
+    },
+    "loc-booth": {
+      "url": "https://api.openverse.org/v1/images/003da916-0678-4f10-b97e-7e232afb459f/thumb/",
+      "credit": {
+        "title": "MK Media: Run Sound!",
+        "creator": "@yakobusan Jakob Montrasio",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/37803129@N00/3099957032"
+      }
+    },
+    "loc-control-room": {
+      "url": "https://api.openverse.org/v1/images/23e1281f-ca80-48b3-9288-8dfced653885/thumb/",
+      "credit": {
+        "title": "Project 365 #44: 130209 A Bit of a Mix Up",
+        "creator": "comedy_nose",
+        "license": "PDM 1.0",
+        "license_url": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/23408922@N07/3276362047"
+      }
+    },
+    "loc-storage": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Self_storage_units.jpg",
+      "credit": {
+        "title": "Self storage units",
+        "creator": "Hankwang",
+        "license": "BY-SA 3.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+        "source": "wikimedia",
+        "landing": "https://commons.wikimedia.org/w/index.php?curid=5633573"
+      }
+    },
+    "ev-me-note": {
+      "url": "https://api.openverse.org/v1/images/d411ad0a-e64b-4501-81ca-ee6f8e7ea405/thumb/",
+      "credit": {
+        "title": "Sticker Nation - 11",
+        "creator": "oskay",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/17425845@N00/411003999"
+      }
+    },
+    "ev-insulin-pen": {
+      "url": "https://api.openverse.org/v1/images/dcb66ed6-459c-421a-8f6f-7bebb9d343c1/thumb/",
+      "credit": {
+        "title": "Insulin pen",
+        "creator": "jlcampbell104",
+        "license": "CC0 1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/104346167@N06/22999942109"
+      }
+    },
+    "ev-cgm": {
+      "url": "https://api.openverse.org/v1/images/7171b98e-d4ef-49a9-a817-76d5e50fbc25/thumb/",
+      "credit": {
+        "title": "Quantifying Hangry with the Abbott FreeStyle Libre continuous blood glucose monitor",
+        "creator": "jurvetson",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/44124348109@N01/50164118868"
+      }
+    },
+    "ev-contract": {
+      "url": "https://api.openverse.org/v1/images/719307ed-c280-4728-87e3-e212c0a849dd/thumb/",
+      "credit": {
+        "title": "Research :Mediterranean Center of Medical Sciences",
+        "creator": "Mcmscience Mediterranean Center of Medical Science",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/129206117@N06/17664002728"
+      }
+    },
+    "ev-delivery": {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Food_delivery_driver_in_car.jpg",
+      "credit": {
+        "title": "Food delivery driver in car",
+        "creator": "Meanwell Packaging",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "wikimedia",
+        "landing": "https://commons.wikimedia.org/w/index.php?curid=120365102"
+      }
+    },
+    "ev-thermos": {
+      "url": "https://api.openverse.org/v1/images/3884733b-ea2a-4d48-92b4-25e6345f3241/thumb/",
+      "credit": {
+        "title": "Dymchurch Beach - Oct 2011 - Candid - One for the Ladies",
+        "creator": "Gareth1953 All Right Now",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/40837632@N05/6202064566"
+      }
+    },
+    "ev-harddrives": {
+      "url": "https://api.openverse.org/v1/images/7c8f1d2f-3703-4a58-8d7c-75641d32af9a/thumb/",
+      "credit": {
+        "title": "OWC external hard drive",
+        "creator": "miss karen",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/47489771@N00/2885262347"
+      }
+    },
+    "ev-field-recorder": {
+      "url": "https://api.openverse.org/v1/images/e7ea15e3-f006-46aa-b4fa-5573883c63c3/thumb/",
+      "credit": {
+        "title": "Handheld Microphone",
+        "creator": "SocialAlex",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/62895222@N07/15077272795"
+      }
+    },
+    "ev-invoice": {
+      "url": "https://api.openverse.org/v1/images/55e4c5bf-e33e-4bb7-93c5-575cc0b851dd/thumb/",
+      "credit": {
+        "title": "Please pay this amount",
+        "creator": "miguelb",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/40838054@N00/8689212"
+      }
+    },
+    "ev-document": {
+      "url": "https://api.openverse.org/v1/images/16219285-ff7b-406a-a2c7-0d667c197707/thumb/",
+      "credit": {
+        "title": "Decorative Hexagonal Origami Gift Box with Lid: # 06",
+        "creator": "Dominic's pics",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/64097751@N00/5705372217"
+      }
+    }
+  }
+}

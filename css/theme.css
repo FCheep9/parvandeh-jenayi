@@ -1,0 +1,75 @@
+/* ============================================================
+   THEME TOKENS — three selectable visual styles.
+   The selected theme sets [data-theme] on <html>; everything
+   else reads these custom properties. Photos get a per-theme
+   filter via .photo-filter so one image set serves all themes.
+   ============================================================ */
+
+:root,
+:root[data-theme="noir"] {
+  --bg:        #0b0d10;
+  --bg-2:      #12161c;
+  --panel:     #14181e;
+  --panel-2:   #1a1f27;
+  --ink:       #e9e7e2;
+  --ink-dim:   #b7b9bf;
+  --muted:     #82858c;
+  --line:      #242a32;
+  --accent:    #c8a14a;   /* brass */
+  --accent-2:  #6fb3c9;   /* cold cyan */
+  --danger:    #c0524a;
+  --good:      #6fae7a;
+  --serif:     ui-serif, Georgia, "Times New Roman", serif;
+  --mono:      ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans:      system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --radius:    10px;
+  --shadow:    0 10px 30px rgba(0,0,0,.45);
+  --grain:     .05;
+  --photo-filter: grayscale(.25) contrast(1.05) brightness(.92) saturate(.9);
+}
+
+:root[data-theme="modern"] {
+  --bg:        #f4f5f7;
+  --bg-2:      #ffffff;
+  --panel:     #ffffff;
+  --panel-2:   #eef1f5;
+  --ink:       #14181d;
+  --ink-dim:   #3c424b;
+  --muted:     #6b7280;
+  --line:      #e2e6ec;
+  --accent:    #2f6df0;
+  --accent-2:  #0f9d8a;
+  --danger:    #d23b34;
+  --good:      #1f9d57;
+  --shadow:    0 8px 24px rgba(20,30,50,.10);
+  --grain:     0;
+  --photo-filter: contrast(1.02) saturate(1.02);
+}
+
+:root[data-theme="gritty"] {
+  --bg:        #15110d;
+  --bg-2:      #1d1813;
+  --panel:     #211b15;
+  --panel-2:   #2a2219;
+  --ink:       #ece2d2;
+  --ink-dim:   #c3b39b;
+  --muted:     #8c7d68;
+  --line:      #352b20;
+  --accent:    #d98a3d;   /* amber */
+  --accent-2:  #8a9a5b;   /* olive */
+  --danger:    #b5483a;
+  --good:      #8a9a5b;
+  --shadow:    0 10px 30px rgba(0,0,0,.5);
+  --grain:     .09;
+  --photo-filter: sepia(.35) contrast(1.08) brightness(.9) saturate(.85);
+}
+
+/* photo treatment */
+.photo-filter { filter: var(--photo-filter); }
+
+/* film-grain overlay strength keys off --grain */
+.grain::after {
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  opacity: var(--grain);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

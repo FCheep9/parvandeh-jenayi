@@ -1,0 +1,19 @@
+{
+  "pool": [
+    { "id": "d1", "portrait": "https://randomuser.me/api/portraits/women/44.jpg" },
+    { "id": "d2", "portrait": "https://randomuser.me/api/portraits/men/32.jpg" },
+    { "id": "d3", "portrait": "https://randomuser.me/api/portraits/women/65.jpg" },
+    { "id": "d4", "portrait": "https://randomuser.me/api/portraits/men/51.jpg" },
+    { "id": "d5", "portrait": "https://randomuser.me/api/portraits/women/12.jpg" },
+    { "id": "d6", "portrait": "https://randomuser.me/api/portraits/men/77.jpg" },
+    { "id": "d7", "portrait": "https://randomuser.me/api/portraits/women/33.jpg" },
+    { "id": "d8", "portrait": "https://randomuser.me/api/portraits/men/9.jpg" },
+    { "id": "d9", "portrait": "https://randomuser.me/api/portraits/women/79.jpg" },
+    { "id": "d10", "portrait": "https://randomuser.me/api/portraits/men/24.jpg" }
+  ],
+  "specialties": [
+    { "id": "forensics", "name": "Forensics", "desc": "You read the science. Lab and autopsy notes reveal an extra detail." },
+    { "id": "interrogation", "name": "Interrogation", "desc": "You read people. One extra pointed question opens up in interviews." },
+    { "id": "profiling", "name": "Profiling", "desc": "You read motive. Suspect dossiers surface an extra behavioral tell." }
+  ]
+}

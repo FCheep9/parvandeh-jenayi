@@ -1,0 +1,23 @@
+{
+  "firstCase": "the-last-clean-take",
+  "cases": [
+    {
+      "id": "the-last-clean-take",
+      "title": "Case 01 — The Last Clean Take",
+      "logline": "A celebrated audiobook narrator is found dead the night before her biggest release — but the \"new\" recordings were made in a room that no longer exists.",
+      "playable": true
+    },
+    {
+      "id": "room-114",
+      "title": "Case 02 — Room 114: The Quiet Hours",
+      "logline": "A retired nurse dies in an \"AI-optimized\" care home. Nobody poisoned her — somebody tuned the staffing algorithm so no one would come.",
+      "playable": false
+    },
+    {
+      "id": "the-salvage-room",
+      "title": "Case 03 — The Salvage Room",
+      "logline": "A flood drowns a crime lab; the \"recovered\" evidence convicts a man your dead partner swore was framed.",
+      "playable": false
+    }
+  ]
+}

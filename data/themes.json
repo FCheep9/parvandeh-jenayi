@@ -1,0 +1,20 @@
+[
+  {
+    "id": "noir",
+    "name": "Noir",
+    "desc": "Dark, cold, film-grain. Brass and cyan over near-black.",
+    "swatches": ["#0b0d10", "#c8a14a", "#6fb3c9", "#e9e7e2"]
+  },
+  {
+    "id": "modern",
+    "name": "Clean Modern",
+    "desc": "Bright, crisp, procedural. White panels, electric blue.",
+    "swatches": ["#f4f5f7", "#2f6df0", "#0f9d8a", "#14181d"]
+  },
+  {
+    "id": "gritty",
+    "name": "Gritty",
+    "desc": "Warm sepia, heavy grain. Amber and olive, worn at the edges.",
+    "swatches": ["#15110d", "#d98a3d", "#8a9a5b", "#ece2d2"]
+  }
+]

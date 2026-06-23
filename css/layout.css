@@ -1,0 +1,118 @@
+/* ============================================================
+   LAYOUT — app shell, screens, hub structure, responsive.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background:
+    radial-gradient(1200px 600px at 70% -10%, var(--bg-2), transparent),
+    radial-gradient(900px 500px at 0% 110%, var(--bg-2), transparent),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+a { color: var(--accent); }
+button { font-family: inherit; }
+
+#app { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ---- generic screen ---- */
+.screen { flex: 1; display: flex; flex-direction: column; }
+.screen-pad { padding: clamp(1.2rem, 4vw, 3rem); }
+.center { align-items: center; justify-content: center; text-align: center; }
+.stack { display: flex; flex-direction: column; }
+.row { display: flex; gap: .75rem; align-items: center; }
+.wrap-narrow { width: 100%; max-width: 720px; margin: 0 auto; }
+.wrap-wide   { width: 100%; max-width: 1100px; margin: 0 auto; }
+.spacer { flex: 1; }
+.hidden { display: none !important; }
+
+/* ---- loading ---- */
+.loading { min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-family: var(--mono); letter-spacing: .15em; }
+
+/* ============================================================
+   ONBOARDING wizard
+   ============================================================ */
+.wizard { max-width: 880px; margin: 0 auto; width: 100%; }
+.wizard-steps { display: flex; gap: .4rem; justify-content: center; margin: 1.4rem 0 2rem; }
+.wizard-steps .dot { width: 30px; height: 4px; border-radius: 3px; background: var(--line); }
+.wizard-steps .dot.on { background: var(--accent); }
+.wizard h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin: 0 0 .3rem; }
+.wizard .sub { color: var(--muted); margin: 0 0 1.6rem; }
+.choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+.portrait-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: .7rem; }
+
+/* ============================================================
+   CASE HUB
+   ============================================================ */
+.hub { display: flex; flex-direction: column; min-height: 100vh; }
+.hub-header {
+  display: flex; align-items: center; gap: 1rem; padding: .6rem clamp(.8rem, 3vw, 1.6rem);
+  border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 88%, transparent);
+  position: sticky; top: 0; z-index: 40; backdrop-filter: blur(6px);
+}
+.hub-title { font-weight: 600; letter-spacing: .02em; }
+.hub-title small { display: block; color: var(--muted); font-family: var(--mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; }
+.hub-header .spacer { flex: 1; }
+
+.clock { font-family: var(--mono); font-size: .8rem; color: var(--accent-2); border: 1px solid var(--line);
+  padding: .3rem .6rem; border-radius: 999px; white-space: nowrap; }
+.clock b { color: var(--ink); }
+
+.tabbar { display: flex; gap: .25rem; padding: .4rem clamp(.6rem, 3vw, 1.4rem); border-bottom: 1px solid var(--line);
+  overflow-x: auto; background: var(--bg); position: sticky; top: 49px; z-index: 30; }
+.tab { background: transparent; border: 1px solid transparent; color: var(--muted); padding: .45rem .85rem;
+  border-radius: 8px; cursor: pointer; font-size: .9rem; white-space: nowrap; }
+.tab:hover { color: var(--ink); }
+.tab.active { color: var(--ink); border-color: var(--line); background: var(--panel); }
+.tab .badge { margin-left: .35rem; font-family: var(--mono); font-size: .7rem; color: var(--accent); }
+
+.hub-body { flex: 1; padding: clamp(1rem, 3vw, 2rem); }
+.hub-body .wrap-wide { display: block; }
+
+/* card grids for evidence/people/locations */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+
+/* story beat */
+.beat { max-width: 760px; margin: 0 auto; }
+.beat-img { width: 100%; border-radius: var(--radius); border: 1px solid var(--line); aspect-ratio: 16/9; object-fit: cover; display: block; }
+.beat-body p { line-height: 1.75; font-size: 1.08rem; color: var(--ink-dim); }
+.beat-body p.lead { color: var(--ink); }
+
+/* dialogue */
+.dlg { max-width: 760px; margin: 0 auto; }
+.dlg-lines { display: flex; flex-direction: column; gap: .8rem; margin: 1.2rem 0; }
+.dlg-options { display: flex; flex-direction: column; gap: .5rem; }
+
+/* board */
+.board-area { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.board-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .8rem; }
+.conclusions { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: .8rem; }
+
+/* responsive */
+@media (max-width: 620px) {
+  .beat-body p { font-size: 1rem; }
+  .tabbar { top: 53px; }
+}
+
+/* modal */
+.modal-back { position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 100;
+  display: flex; align-items: center; justify-content: center; padding: 1rem; }
+.modal { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  max-width: 640px; width: 100%; max-height: 88vh; overflow: auto; box-shadow: var(--shadow); }
+.modal-pad { padding: 1.4rem; }
+
+/* toast */
+.toast-host { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 200;
+  display: flex; flex-direction: column; gap: .5rem; align-items: center; }
+.toast { background: var(--panel-2); border: 1px solid var(--line); color: var(--ink);
+  padding: .6rem 1rem; border-radius: 999px; box-shadow: var(--shadow); font-size: .9rem; animation: rise .3s ease; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+
+/* pass-the-device splash */
+.handoff { position: fixed; inset: 0; z-index: 150; background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1rem; padding: 2rem; }
