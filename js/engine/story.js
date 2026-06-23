@@ -7,6 +7,7 @@ import { Media } from './media.js';
 import { Board } from './board.js';
 import { TwoP } from './twoplayer.js';
 import { diff } from './difficulty.js';
+import { Accusation } from '../screens/accusation.js';
 
 function curAct() { return State.caseData?.acts?.[State.progress.actIndex]; }
 function curBeat() { const a = curAct(); return a && a.beats[State.progress.beatIndex]; }
@@ -64,6 +65,12 @@ export const Story = {
     const beat = curBeat();
     if (!beat) { mount(container, el('div', { class: 'empty', text: 'داستان به پایان رسید.' })); return; }
     applyBeat(beat, app);
+
+    // special beat types
+    if (beat.type === 'accusation') {
+      return Accusation.render(app, container, beat, (verdict) => { State.flag('verdict', verdict); State.saveProgress(); advance(app, beat.goto); });
+    }
+    if (beat.type === 'ending') { return Accusation.renderEnding(app, container, beat); }
 
     const node = el('div', { class: 'beat' });
     if (beat.act_label) node.append(el('div', { class: 'kicker mb', text: beat.act_label }));

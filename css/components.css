@@ -148,6 +148,50 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
 }
 [dir="rtl"] .cine .skip { inset-inline-end: 24px; right: auto; }
 
+/* travel-map location cards */
+.loc-card.objective { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.loc-thumb-wrap { position: relative; }
+.loc-flag { position: absolute; top: 8px; inset-inline-start: 8px; background: var(--accent); color: #14110a; font-size: .72rem; font-weight: 700; padding: .2rem .55rem; border-radius: 999px; }
+.loc-people { display: flex; align-items: center; gap: .35rem; margin-top: .55rem; }
+.loc-people .portrait { width: 26px; height: 26px; border-width: 1px; }
+.loc-enter { margin-top: .6rem; color: var(--accent); font-size: .86rem; }
+
+/* full-screen scene view */
+.scene { position: fixed; inset: 0; z-index: 90; background: var(--bg); display: flex; flex-direction: column; }
+.scene-topbar { display: flex; align-items: center; gap: 1rem; padding: .6rem 1rem; border-bottom: 1px solid var(--line); }
+.scene-title { display: flex; flex-direction: column; line-height: 1.2; }
+.scene-stage { position: relative; flex: 1; overflow: hidden; min-height: 38vh; }
+.scene-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.scene-hotspot { position: absolute; transform: translate(-50%, -50%); display: flex; align-items: center; gap: .35rem;
+  background: color-mix(in srgb, var(--panel) 82%, transparent); border: 1px solid var(--accent); color: var(--ink);
+  border-radius: 999px; padding: .2rem .55rem .2rem .25rem; cursor: pointer; backdrop-filter: blur(4px);
+  font-size: .8rem; box-shadow: 0 2px 12px rgba(0,0,0,.45); animation: hspulse 2.2s ease-in-out infinite; max-width: 46vw; }
+.scene-hotspot .dot { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #14110a; display: grid; place-items: center; font-weight: 700; font-size: .72rem; flex: none; }
+.scene-hotspot .lbl { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scene-hotspot.done { border-color: var(--good); animation: none; opacity: .92; }
+.scene-hotspot.done .dot { background: var(--good); }
+@keyframes hspulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 16%, transparent), 0 2px 12px rgba(0,0,0,.45); } }
+.scene-people { display: flex; align-items: center; gap: .5rem; padding: .55rem 1rem; overflow-x: auto; border-top: 1px solid var(--line); }
+.scene-person { display: flex; align-items: center; gap: .4rem; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: .22rem .7rem .22rem .22rem; cursor: pointer; white-space: nowrap; flex: none; }
+.scene-person:hover { border-color: var(--accent); }
+.scene-person .portrait { width: 32px; height: 32px; }
+.scene-caption { padding: .8rem 1rem; border-top: 1px solid var(--line); min-height: 3.4em; line-height: 1.65; background: var(--panel); }
+
+/* objective banner */
+.objective-bar { display: flex; align-items: center; gap: .5rem; margin-bottom: 1rem; padding: .55rem .8rem;
+  background: color-mix(in srgb, var(--accent) 9%, var(--panel)); border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  border-radius: 10px; font-size: .92rem; }
+.objective-bar .label { color: var(--accent); flex: none; }
+
+/* accusation board */
+.acc-q { border: 1px solid var(--line); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; background: var(--panel); }
+.acc-q > h4 { margin: 0 0 .7rem; }
+.acc-opt { display: block; width: 100%; text-align: start; background: var(--panel-2); border: 1px solid var(--line); color: var(--ink); border-radius: 8px; padding: .6rem .8rem; margin-bottom: .5rem; cursor: pointer; }
+.acc-opt:hover { border-color: var(--accent); }
+.acc-opt.sel { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+.acc-suspect { display: flex; align-items: center; gap: .6rem; }
+.acc-suspect .portrait { width: 38px; height: 38px; }
+
 /* floating audio toggles */
 .audio-ctl { position: fixed; bottom: 14px; inset-inline-start: 14px; z-index: 80; display: flex; gap: .4rem; }
 .audio-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);

@@ -64,6 +64,76 @@
         "landing": "https://commons.wikimedia.org/w/index.php?curid=5633573"
       }
     },
+    "loc-office": {
+      "url": "https://api.openverse.org/v1/images/ea1aab62-a6f1-4c53-a362-5459b7e1d2b0/thumb/",
+      "credit": {
+        "title": "DSC07501-Praha Hilton",
+        "creator": "lyng883",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/87616709@N00/4194586026"
+      }
+    },
+    "loc-archive": {
+      "url": null,
+      "credit": null
+    },
+    "ev-freezer": {
+      "url": "https://api.openverse.org/v1/images/fc334a25-7a39-4dba-9bdc-fe908faff2e8/thumb/",
+      "credit": {
+        "title": "Obst einfrieren / Freezing fruits",
+        "creator": "tiefkuehlfan",
+        "license": "BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/96401256@N02/8927548732"
+      }
+    },
+    "ev-receipt": {
+      "url": "https://api.openverse.org/v1/images/789b1fb2-7579-4f03-a1e3-ee75a48e4097/thumb/",
+      "credit": {
+        "title": "Automated Postal Center and new Priority Mail box display",
+        "creator": "Aranami",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/51526368@N03/5115759015"
+      }
+    },
+    "ev-parking": {
+      "url": "https://api.openverse.org/v1/images/a9a72489-426c-40fa-8d79-6554db6b11ba/thumb/",
+      "credit": {
+        "title": "Virus on a parking garage ticket computer",
+        "creator": "Dave Mathews",
+        "license": "BY-SA 2.0",
+        "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/36248504@N00/397309792"
+      }
+    },
+    "ev-laptop": {
+      "url": "https://api.openverse.org/v1/images/77ac6dd9-6ee6-4825-8a45-98eef04976ad/thumb/",
+      "credit": {
+        "title": "exhausted laptops",
+        "creator": "BryanAlexander",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/36521954815@N01/391393457"
+      }
+    },
+    "ev-phone": {
+      "url": "https://api.openverse.org/v1/images/b041f565-8ee9-47ed-acec-27b7895712a5/thumb/",
+      "credit": {
+        "title": "New phone",
+        "creator": "AMagill",
+        "license": "BY 2.0",
+        "license_url": "https://creativecommons.org/licenses/by/2.0/",
+        "source": "flickr",
+        "landing": "https://www.flickr.com/photos/85473033@N00/190570314"
+      }
+    },
     "ev-me-note": {
       "url": "https://api.openverse.org/v1/images/d411ad0a-e64b-4501-81ca-ee6f8e7ea405/thumb/",
       "credit": {

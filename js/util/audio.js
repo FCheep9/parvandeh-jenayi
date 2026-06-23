@@ -31,7 +31,8 @@ export const Sound = {
 
   init() {
     try { musicMuted = localStorage.getItem(MUSIC_KEY) === '1'; voxMuted = localStorage.getItem(VOX_KEY) === '1'; } catch {}
-    ambEl = new Audio(); ambEl.loop = true; ambEl.volume = 0;
+    try { const A = (typeof window !== 'undefined' && window.Audio) || (typeof Audio !== 'undefined' && Audio); ambEl = A ? new A() : null; if (ambEl) { ambEl.loop = true; ambEl.volume = 0; } } catch { ambEl = null; }
+    if (!ambEl) return;
     const unlock = () => { unlocked = true; if (pendingSlot) this.scene(pendingSlot); window.removeEventListener('pointerdown', unlock); window.removeEventListener('keydown', unlock); };
     window.addEventListener('pointerdown', unlock); window.addEventListener('keydown', unlock);
   },

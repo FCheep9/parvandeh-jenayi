@@ -19,6 +19,14 @@ const TABS = [
   { id: 'board', label: 'تابلو' },
 ];
 
+function objectiveText() {
+  const P = State.progress;
+  if (P.phase !== 'play') return null;
+  const a = State.caseData.acts[P.actIndex];
+  const b = a && a.beats[P.beatIndex];
+  return b ? (b.objective || b.title || null) : null;
+}
+
 function badge(tab) {
   const P = State.progress;
   if (tab === 'evidence') { const n = P.unlocked.evidence.filter(id => !P.examined.evidence.includes(id)).length; return n || ''; }
@@ -57,8 +65,12 @@ export function renderHub(app, root) {
 
   // body
   const body = el('div', { class: 'hub-body' });
-  const content = el('div', { class: 'wrap-wide' });
-  body.append(content);
+  const inner = el('div', { class: 'wrap-wide' });
+  const obj = objectiveText();
+  if (obj && activeTab !== 'story') inner.append(el('div', { class: 'objective-bar' }, el('span', { class: 'label', text: 'هدف:' }), el('span', { text: obj })));
+  const content = el('div', {});
+  inner.append(content);
+  body.append(inner);
   hub.append(body);
 
   mount(root, hub);

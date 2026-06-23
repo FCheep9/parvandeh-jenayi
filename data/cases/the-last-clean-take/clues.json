@@ -1,62 +1,68 @@
 {
   "clues": {
-    "body-posed": {
-      "id": "body-posed",
-      "title": "جسد در حالتی آراسته، بی هیچ نشانی از درگیری",
-      "src": "مکان · اتاقک ضبط صدا",
-      "icon": "🪑"
-    },
-    "pmi-wrong": {
-      "id": "pmi-wrong",
-      "title": "زمان مرگ با صحنه جور درنمی‌آید",
-      "src": "مدرک · یادداشت میدانیِ پزشک قانونی",
-      "icon": "🕓"
-    },
-    "breaths-wrong": {
-      "id": "breaths-wrong",
-      "title": "صدای «جدید» مثل یک ماشین نفس می‌کشد",
-      "src": "بازرسیِ صوتی",
-      "icon": "🎧"
-    },
-    "insulin-dose": {
-      "id": "insulin-dose",
-      "title": "انسولینی برای وعده‌ای که هرگز خورده نشد",
-      "src": "مدرک · قلم انسولین",
-      "icon": "💉"
-    },
-    "rights-rider": {
-      "id": "rights-rider",
-      "title": "اگر او نخست مرده باشد، حق صدایش بازمی‌گردد",
-      "src": "مدرک · قرارداد",
-      "icon": "📄"
-    }
+    "body-posed":      { "id": "body-posed",      "title": "جسدِ حالت‌دهی‌شده، بی‌نشانِ کشمکش", "src": "مکان · اتاقک",            "icon": "🪑" },
+    "pmi-wrong":       { "id": "pmi-wrong",       "title": "زمان مرگ با صحنه جور درنمی‌آید",   "src": "مدرک · یادداشت پزشک قانونی", "icon": "🕓" },
+    "breaths-wrong":   { "id": "breaths-wrong",   "title": "صدای «تازه» مثل ماشین نفس می‌کشد",  "src": "تحلیل صوتی",                 "icon": "🎧" },
+    "insulin-dose":    { "id": "insulin-dose",    "title": "انسولین برای وعده‌ای که نخورد",     "src": "مدرک · قلم انسولین",         "icon": "💉" },
+    "rights-rider":    { "id": "rights-rider",    "title": "اگر زودتر بمیرد، صدایش به ناشر می‌رسد", "src": "مدرک · قرارداد",          "icon": "📄" },
+    "old-room-tone":   { "id": "old-room-tone",   "title": "وزوزِ اتاقِ قدیمی در ضبطِ تازه",     "src": "تحلیل صوتی · وزوزِ اتاق",     "icon": "🔊" },
+    "renovated":       { "id": "renovated",       "title": "اتاقک ۹ هفته پیش بازسازی شده",      "src": "مدرک · فاکتور بازسازی",      "icon": "🧱" },
+    "ice-crystal":     { "id": "ice-crystal",     "title": "آسیبِ یخ‌زدگی در بافتِ جسد",        "src": "مدرک · کالبدشکافی",          "icon": "🧊" },
+    "cgm-curve":       { "id": "cgm-curve",       "title": "افتِ تدریجیِ قند در پنج ساعت",       "src": "مدرک · پایشگر قند",          "icon": "📉" },
+    "storage-unit":    { "id": "storage-unit",    "title": "انباری‌ای به نامِ پدرِ آرمان",      "src": "مدرک · اجاره‌نامه",          "icon": "🔑" },
+    "freezer-prints":  { "id": "freezer-prints",  "title": "اثرِ انگشتِ پریسا روی فریزر",        "src": "مدرک · فریزر",              "icon": "🧤" },
+    "toll-priya":      { "id": "toll-priya",      "title": "ترددِ پریسا، شبِ پیش از کشفِ جسد",   "src": "مدرک · دوربینِ تردد",        "icon": "🚗" },
+    "voice-model-logs":{ "id": "voice-model-logs","title": "لاگِ ساختِ مدلِ صدا با ورودِ آرمان",  "src": "مدرک · لاگِ نرم‌افزار",      "icon": "🖥️" },
+    "talkback":        { "id": "talkback",        "title": "نوارِ تاک‌بک: آرمان مرگِ او را شنید", "src": "مدرک · نوارِ جلسه",          "icon": "🎙️" },
+    "gareth-knew":     { "id": "gareth-knew",     "title": "کامران به مصنوعی‌بودنِ ضبط‌ها شک داشت", "src": "مدرک · ایمیل‌ها",          "icon": "✉️" }
   },
   "links": [
-    {
-      "pair": [
-        "body-posed",
-        "pmi-wrong"
-      ],
-      "conclusion": "staged-quiet"
-    },
-    {
-      "pair": [
-        "breaths-wrong",
-        "pmi-wrong"
-      ],
-      "conclusion": "when-not-who"
-    }
+    { "pair": ["body-posed", "pmi-wrong"],         "conclusion": "staged-quiet" },
+    { "pair": ["old-room-tone", "renovated"],      "conclusion": "room-impossible" },
+    { "pair": ["ice-crystal", "storage-unit"],     "conclusion": "frozen-body" },
+    { "pair": ["cgm-curve", "insulin-dose"],       "conclusion": "accidental-death" },
+    { "pair": ["voice-model-logs", "rights-rider"],"conclusion": "theo-architect" },
+    { "pair": ["freezer-prints", "toll-priya"],    "conclusion": "priya-staged" },
+    { "pair": ["talkback", "cgm-curve"],           "conclusion": "theo-heard" },
+    { "pair": ["gareth-knew", "rights-rider"],     "conclusion": "gareth-complicit" },
+    { "pair": ["breaths-wrong", "voice-model-logs"], "conclusion": "synthetic-voice" }
   ],
   "conclusions": {
     "staged-quiet": {
-      "id": "staged-quiet",
-      "title": "صحنه را بی‌سروصدا چیده‌اند",
-      "text": "هیچ نشانی از درگیری نیست؛ و زمان مرگ با این اتاق جور درنمی‌آید. او را اینجا گذاشته‌اند؛ پیدا شده است، نه آنکه اینجا مرده باشد."
+      "id": "staged-quiet", "title": "صحنه، آرام‌سازی شده",
+      "text": "نه کشمکشی، و زمان مرگی که با اتاق جور درنمی‌آید. او را اینجا گذاشته‌اند؛ پیدا شده، نه اینکه اینجا مرده باشد."
     },
-    "when-not-who": {
-      "id": "when-not-who",
-      "title": "بپرس کِی، نه چه‌کسی",
-      "text": "اگر ضبط‌های «جدید» جعلی‌اند و مرگ از آنچه صحنه نشان می‌دهد قدیمی‌تر است، پرسش اصلی این نیست که چه‌کسی دل‌آرا وثوقی را کشته است؛ این است که او به‌راستی کِی مرده است."
+    "room-impossible": {
+      "id": "room-impossible", "title": "اتاقی که دیگر وجود ندارد",
+      "text": "ضبط‌های «تازه» وزوزِ اتاقِ قدیمی را دارند، اما آن اتاق ۹ هفته پیش بازسازی شده. پس این ضبط‌ها نمی‌توانند تازه باشند — دل‌آرا دیشب نمرده است."
+    },
+    "frozen-body": {
+      "id": "frozen-body", "title": "جسدِ منجمد",
+      "text": "آسیبِ یخ‌زدگیِ بافت، به‌علاوه‌ی انباریِ اجاره‌شده: جسد هفته‌ها منجمد نگه داشته شده و بعد، شبِ کشف، سرِ صحنه گذاشته شده."
+    },
+    "accidental-death": {
+      "id": "accidental-death", "title": "مرگِ تصادفی، نه قتل",
+      "text": "افتِ تدریجیِ قند طیِ پنج ساعت، و انسولینی که برای وعده‌ای نخورده تزریق شده. کسی او را نکشت؛ او در تنهایی و تصادفی از پا افتاد."
+    },
+    "theo-architect": {
+      "id": "theo-architect", "title": "معمارِ جعل: آرمان",
+      "text": "لاگِ ساختِ مدلِ صدا زیرِ نامِ کاربریِ آرمان است و بندِ قرارداد انگیزه را می‌سازد: او صدا را جعل کرد و مرگ را پنهان کرد تا حقوقِ صدا از چنگِ ناشر بیرون بماند."
+    },
+    "priya-staged": {
+      "id": "priya-staged", "title": "صحنه‌ساز: پریسا",
+      "text": "اثرِ انگشتِ پریسا روی فریزر و ترددش شبِ پیش از کشف: او بود که جسد را منجمد کرد و سرِ صحنه گرداند."
+    },
+    "theo-heard": {
+      "id": "theo-heard", "title": "او شنید و نیامد",
+      "text": "نوارِ تاک‌بک نشان می‌دهد آرمان صدای بریده‌بریده‌ی او را در حالِ مرگ شنیده و سرِ کارش برگشته. جرم نیست؛ اما همان بیست‌ ثانیه‌ای است که همه‌چیز را راه انداخت."
+    },
+    "gareth-complicit": {
+      "id": "gareth-complicit", "title": "سکوتِ سودآور: کامران",
+      "text": "کامران به مصنوعی‌بودنِ صدا شک داشت و دم نزد، چون بازگشتِ حقوق به ناشر به سودِ او بود. دستش به جسد نخورد؛ اما سکوتش انتخاب بود."
+    },
+    "synthetic-voice": {
+      "id": "synthetic-voice", "title": "صدا، مصنوعی است",
+      "text": "نفس‌کشیدنِ ماشینی، به‌علاوه‌ی لاگِ ساختِ مدلِ صدا: «دل‌آرای جدید» اصلاً انسان نیست — یک تقلیدِ ساخته‌شده از مَسترهای اوست."
     }
   }
 }
