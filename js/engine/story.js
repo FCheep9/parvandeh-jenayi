@@ -8,7 +8,7 @@ import { Board } from './board.js';
 import { TwoP } from './twoplayer.js';
 import { diff } from './difficulty.js';
 
-function curAct() { return State.caseData.acts[State.progress.actIndex]; }
+function curAct() { return State.caseData?.acts?.[State.progress.actIndex]; }
 function curBeat() { const a = curAct(); return a && a.beats[State.progress.beatIndex]; }
 
 function applyBeat(beat, app) {

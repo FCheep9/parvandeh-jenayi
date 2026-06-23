@@ -17,6 +17,9 @@ function initDraft(app) {
     tone: 'balanced', difficulty: 'detective',
     mode: 'solo', lead: null, partner: { name: 'Sam', portrait: pool[1].portrait }, activeRole: 'lead',
   };
+  // normalize older/partial profiles so the wizard never dereferences null
+  if (!draft.detective) draft.detective = { name: '', portrait: pool[0].portrait, specialty: app.config.detectives.specialties[0].id };
+  if (!draft.partner) draft.partner = { name: 'Sam', portrait: pool[1].portrait };
 }
 
 export function renderOnboarding(app, root) {

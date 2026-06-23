@@ -56,7 +56,7 @@ async function go(route, params) {
     if (route === 'play') {
       await loadCase(app.config.firstCase);
       if (!State.loadProgress(State.caseId)) { State.progress = State.freshProgress(); State.saveProgress(); }
-      document.documentElement.dataset.theme = State.profile.theme;
+      document.documentElement.dataset.theme = State.profile?.theme || 'noir';
       return renderHub(app, root);
     }
   } catch (err) {
@@ -113,7 +113,7 @@ function renderIntro() {
     el('h1', { html: m.title, style: { fontSize: 'clamp(1.8rem,5vw,3rem)', margin: '.4rem 0 1rem' } }),
     Media.img('loc-booth', { alt: 'Saltwire Audio', glyph: '🎙', cls: 'beat-img' }),
     el('div', { class: 'beat-body mt', style: { textAlign: 'left' } }, ...paragraphs(m.logline, 'lead')),
-    el('p', { class: 'muted small', text: `You play ${State.profile.detective.name}. ${m.protagonist_note || ''}` }),
+    el('p', { class: 'muted small', text: `You play ${State.profile?.detective?.name || 'Detective'}. ${m.protagonist_note || ''}` }),
     el('div', { class: 'row mt2', style: { justifyContent: 'center', gap: '.6rem' } },
       el('button', { class: 'btn btn-primary', text: '▸ Begin', onclick: () => { State.resetProgress(app.config.firstCase); State.progress = State.freshProgress(); State.saveProgress(); go('play'); } }),
       el('button', { class: 'btn btn-ghost', text: 'Back', onclick: () => go('menu') })));

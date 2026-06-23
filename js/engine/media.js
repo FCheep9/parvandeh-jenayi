@@ -50,9 +50,9 @@ export const Media = {
   },
 
   /** Pass-through portrait by absolute URL (onboarding detective pool). */
-  portraitByUrl(url, { size = 80, cls = '' } = {}) {
+  portraitByUrl(url, { size = 80, cls = '', alt = 'Detective portrait' } = {}) {
     const fallback = svgPlaceholder('', '☻');
-    const node = el('img', { class: `portrait ${cls}`.trim(), style: { width: size + 'px', height: size + 'px' }, src: url || fallback, alt: 'portrait', loading: 'lazy' });
+    const node = el('img', { class: `portrait ${cls}`.trim(), style: { width: size + 'px', height: size + 'px' }, src: url || fallback, alt, loading: 'lazy' });
     node.addEventListener('error', () => { node.src = fallback; }, { once: true });
     return node;
   },

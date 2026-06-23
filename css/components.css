@@ -49,7 +49,13 @@ input[type="text"], textarea, select {
   background: var(--bg-2); color: var(--ink); border: 1px solid var(--line); border-radius: 8px;
   padding: .6rem .7rem; font-family: var(--sans); font-size: 1rem; }
 textarea { min-height: 80px; resize: vertical; }
-input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+
+/* visible keyboard focus for all interactive controls */
+.btn:focus-visible, .opt:focus-visible, .card:focus-visible, .clue:focus-visible,
+.tab:focus-visible, .role-chip:focus-visible, .portrait.pick:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
 
 /* option cards (theme/specialty/difficulty) */
 .opt { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);

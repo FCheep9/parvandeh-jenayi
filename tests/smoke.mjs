@@ -49,6 +49,7 @@ localStorage.setItem('pj:profile:v1', JSON.stringify(profile));
 // ---- imports (after globals) ----
 const { State } = await import('../js/state.js');
 const { Board } = await import('../js/engine/board.js');
+const { TwoP } = await import('../js/engine/twoplayer.js');
 const { Investigation } = await import('../js/engine/investigation.js');
 const { renderHub } = await import('../js/screens/casehub.js');
 const { renderOnboarding } = await import('../js/screens/onboarding.js');
@@ -142,6 +143,33 @@ ok(State.progress.flags.heldScene === true, 'heldScene flag recorded');
 
 // ---- persistence ----
 ok(!!localStorage.getItem('pj:save:v1:the-last-clean-take'), 'progress persisted to localStorage');
+
+// ---- 2-player: Lead-only commit gate ----
+State.profile.mode = '2p';
+State.profile.activeRole = 'partner';
+ok(TwoP.canCommit() === false, '2P: Partner cannot commit binding decisions');
+State.profile.activeRole = 'lead';
+ok(TwoP.canCommit() === true, '2P: Lead can commit');
+State.profile.mode = 'solo';
+
+// ---- 2-player onboarding path (the partner-setup the review flagged) ----
+step('2P onboarding', () => {
+  renderOnboarding(app, root);                  // step 0: theme
+  clickByText('#app', 'button', 'Next');        // -> step 1: detective
+  const nameInput = document.querySelector('#app input[type="text"]');
+  ok(!!nameInput, '2P: detective name field present');
+  nameInput.value = 'Mara Quinn'; nameInput.dispatchEvent(new window.Event('input'));
+  clickByText('#app', 'button', 'Next');        // -> step 2: tone/difficulty
+  clickByText('#app', 'button', 'Next');        // -> step 3: players
+  clickByText('#app', '.opt', 'Two players');   // switch to 2P (renders partner fields)
+  const pn = document.querySelector('#app input[placeholder="Partner name"]');
+  ok(!!pn, '2P: partner name field appears');
+  pn.value = 'Devi'; pn.dispatchEvent(new window.Event('input'));
+  const pp = document.querySelector('#app .portrait-grid .portrait.pick');
+  if (pp) pp.click();                            // pick a partner portrait (was the null-deref risk)
+  clickByText('#app', 'button', 'Begin the case');
+  ok(State.profile.mode === '2p' && State.profile.partner.name === 'Devi', '2P: profile saved with partner');
+});
 
 console.log(`\n${failures ? '✗ ' + failures + ' FAILURE(S)' : '✓ ALL SMOKE CHECKS PASSED'}`);
 process.exit(failures ? 1 : 0);
