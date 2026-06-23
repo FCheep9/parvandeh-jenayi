@@ -13,7 +13,7 @@ function initDraft() {
   const p = State.profile;
   draft = {
     theme: 'noir',
-    detective: { name: 'مارا کوین', portrait: MARA_PORTRAIT, specialty: 'forensics' },
+    detective: { name: 'مهتاب کیانی', portrait: MARA_PORTRAIT, specialty: 'forensics' },
     tone: 'balanced',
     difficulty: p?.difficulty || 'detective',
     mode: p?.mode || 'solo',
@@ -36,7 +36,7 @@ export function renderOnboarding(app, root) {
     el('div', { class: 'person-row mt2', style: { justifyContent: 'center' } },
       Media.portraitByUrl(MARA_PORTRAIT, { size: 72, alt: 'پرتره کارآگاه' }),
       el('div', {},
-        el('div', { class: 'card-title', text: 'کارآگاه مارا کوین' }),
+        el('div', { class: 'card-title', text: 'کارآگاه مهتاب کیانی' }),
         el('div', { class: 'card-sub', text: 'در بدترین سال زندگی‌ات، صدای او همدمت بود. حالا به گوش خودت هم اطمینان نداری.' }))),
     el('hr', { class: 'divider' }));
 
@@ -58,7 +58,7 @@ export function renderOnboarding(app, root) {
   if (draft.mode === '2p') {
     box.append(el('div', { class: 'callout', style: { marginTop: '1rem' } },
       el('span', { class: 'label', text: 'نقش‌ها' }),
-      el('div', { text: 'هر دو بازیکن آزادانه مدارک، اشخاص و صحنه‌ها را بررسی می‌کنند؛ اما فقط کارآگاه ارشد (مارا) تصمیم‌های نهایی و اتهام را قطعی می‌کند. همکار کاوش می‌کند و مشورت می‌دهد.' })));
+      el('div', { text: 'هر دو بازیکن آزادانه مدارک، اشخاص و صحنه‌ها را بررسی می‌کنند؛ اما فقط کارآگاه ارشد (مهتاب) تصمیم‌های نهایی و اتهام را قطعی می‌کند. همکار کاوش می‌کند و مشورت می‌دهد.' })));
     const pn = el('input', { type: 'text', value: draft.partner.name, placeholder: 'نام همکار (مثلاً: سام)', maxlength: 28,
       'data-test': 'partner-name', oninput: e => { draft.partner.name = e.target.value; } });
     box.append(el('label', { class: 'field mt' }, el('span', { text: 'نام همکار' }), pn));

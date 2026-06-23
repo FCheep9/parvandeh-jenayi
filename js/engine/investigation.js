@@ -4,6 +4,9 @@ import { State } from '../state.js';
 import { el, mount, paragraphs } from '../util/dom.js';
 import { Media } from './media.js';
 import { Board } from './board.js';
+import { Sound } from '../util/audio.js';
+
+const LOC_SOUND = { 'loc-booth': 'amb-booth', 'loc-control-room': 'amb-control', 'loc-saltwire-ext': 'amb-rain' };
 
 function unlockedItems(map, bucket) {
   const ids = State.progress.unlocked[bucket];
@@ -23,7 +26,7 @@ export const Investigation = {
       const grid = el('div', { class: 'card-grid' });
       for (const it of items) {
         const examined = State.progress.examined.evidence.includes(it.id);
-        const card = el('div', { class: 'card selectable', onclick: () => this.openEvidence(app, it) },
+        const card = el('div', { class: 'card selectable', dataset: { ev: it.id }, onclick: () => this.openEvidence(app, it) },
           Media.img(it.slot, { alt: it.name, glyph: it.glyph || '🗎', cls: 'thumb' }),
           el('div', { class: 'card-pad' },
             el('div', { class: 'row', style: { justifyContent: 'space-between' } },
@@ -80,7 +83,7 @@ export const Investigation = {
     const grid = el('div', { class: 'card-grid' });
     for (const p of items) {
       const done = State.progress.interviewed.includes(p.id);
-      const card = el('div', { class: 'card', onclick: () => app.openDialogue(p.id) },
+      const card = el('div', { class: 'card', dataset: { person: p.id }, onclick: () => app.openDialogue(p.id) },
         el('div', { class: 'card-pad person-row' },
           Media.portrait(p.id, { size: 64 }),
           el('div', {},
@@ -100,7 +103,7 @@ export const Investigation = {
     if (!items.length) { mount(container, el('div', { class: 'empty', text: 'هنوز مکانی برای جست‌وجو نیست.' })); return; }
     const grid = el('div', { class: 'card-grid' });
     for (const loc of items) {
-      const card = el('div', { class: 'card', onclick: () => this.openLocation(app, loc) },
+      const card = el('div', { class: 'card', dataset: { loc: loc.id }, onclick: () => this.openLocation(app, loc) },
         Media.img(loc.slot, { alt: loc.name, glyph: '🏠', cls: 'thumb' }),
         el('div', { class: 'card-pad' },
           el('div', { class: 'card-title', text: loc.name }),
@@ -111,6 +114,7 @@ export const Investigation = {
   },
 
   openLocation(app, loc) {
+    Sound.scene(LOC_SOUND[loc.id] || 'amb-booth');
     const body = el('div', { class: 'modal-pad' });
     const render = () => {
       mount(body,
@@ -120,7 +124,7 @@ export const Investigation = {
         el('p', { class: 'muted', text: loc.description || loc.summary || '' }),
         el('div', { class: 'label mt', text: 'صحنه را بگرد' }),
         hotspotList(),
-        el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'بستن', onclick: () => app.closeModal() })));
+        el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'بستن', onclick: () => { Sound.scene('amb-booth'); app.closeModal(); } })));
     };
     const hotspotList = () => {
       const list = el('div', { class: 'stack', style: { gap: '.5rem' } });

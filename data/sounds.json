@@ -1,0 +1,54 @@
+{
+  "slots": {
+    "amb-menu": {
+      "url": "https://cdn.freesound.org/previews/155/155139_2098884-hq.mp3",
+      "credit": {
+        "title": "Action music loop with dark ambient drones",
+        "creator": "burning-mir",
+        "license": "CC0 1.0",
+        "source": "freesound",
+        "landing": "https://freesound.org/people/burning-mir/sounds/155139"
+      }
+    },
+    "amb-booth": {
+      "url": "https://cdn.freesound.org/previews/171/171740_1648170-hq.mp3",
+      "credit": {
+        "title": "room-tone quiet 01 121129_01.wav",
+        "creator": "klankbeeld",
+        "license": "BY 4.0",
+        "source": "freesound",
+        "landing": "https://freesound.org/people/klankbeeld/sounds/171740"
+      }
+    },
+    "amb-rain": {
+      "url": "https://cdn.freesound.org/previews/319/319567_2752236-hq.mp3",
+      "credit": {
+        "title": "distant storm 2.WAV",
+        "creator": "Soojay",
+        "license": "CC0 1.0",
+        "source": "freesound",
+        "landing": "https://freesound.org/people/Soojay/sounds/319567"
+      }
+    },
+    "amb-control": {
+      "url": "https://cdn.freesound.org/previews/130/130519_1653827-hq.mp3",
+      "credit": {
+        "title": "Machine Hum 2.wav",
+        "creator": "duckduckpony",
+        "license": "BY 4.0",
+        "source": "freesound",
+        "landing": "https://freesound.org/people/duckduckpony/sounds/130519"
+      }
+    },
+    "amb-tension": {
+      "url": "https://cdn.freesound.org/previews/207/207555_2986310-hq.mp3",
+      "credit": {
+        "title": "Deep Cinematic Rumble Stereo",
+        "creator": "PatrickLieberkind",
+        "license": "BY 4.0",
+        "source": "freesound",
+        "landing": "https://freesound.org/people/PatrickLieberkind/sounds/207555"
+      }
+    }
+  }
+}

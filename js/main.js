@@ -7,6 +7,7 @@ import { renderOnboarding } from './screens/onboarding.js';
 import { renderHub } from './screens/casehub.js';
 import { openDialogue } from './screens/dialogue.js';
 import { openWaveform } from './screens/waveform.js';
+import { Sound } from './util/audio.js';
 
 const root = document.getElementById('app');
 
@@ -31,7 +32,9 @@ async function loadConfig() {
   const [registry, themes, detectives] = await Promise.all([
     getJSON('data/registry.json'), getJSON('data/themes.json'), getJSON('data/detectives.json'),
   ]);
-  app.config = { registry, themes, detectives, firstCase: registry.firstCase };
+  let sounds = { slots: {} };
+  try { sounds = await getJSON('data/sounds.json'); } catch {}
+  app.config = { registry, themes, detectives, sounds, firstCase: registry.firstCase };
 }
 
 async function loadCase(caseId) {
@@ -73,6 +76,7 @@ function rerender() { go(app.route, app.params); }
 // ---------------- menu / intro ----------------
 function renderMenu() {
   document.documentElement.dataset.theme = State.profile?.theme || 'noir';
+  Sound.scene('amb-menu');
   const reg = app.config.registry;
   const hasSave = State.hasSave(app.config.firstCase);
   const screen = el('div', { class: 'screen screen-pad center grain' });
@@ -107,11 +111,12 @@ function renderMenu() {
 
 function renderIntro() {
   const m = State.caseData.meta;
+  Sound.scene('amb-menu');
   const screen = el('div', { class: 'screen screen-pad center grain' });
   const box = el('div', { class: 'wrap-narrow tcenter' },
     el('div', { class: 'kicker', text: m.act_label || 'پرونده ۰۱' }),
     el('h1', { html: m.title, style: { fontSize: 'clamp(1.8rem,5vw,3rem)', margin: '.4rem 0 1rem' } }),
-    Media.img('loc-booth', { alt: 'استودیوی سالت‌وایر', glyph: '🎙', cls: 'beat-img' }),
+    Media.img('loc-booth', { alt: 'استودیوی آوای نقره', glyph: '🎙', cls: 'beat-img' }),
     el('div', { class: 'beat-body mt', style: { textAlign: 'start' } }, ...paragraphs(m.logline, 'lead')),
     el('p', { class: 'muted small', text: `نقش ${State.profile?.detective?.name || 'کارآگاه'} را بازی می‌کنی. ${m.protagonist_note || ''}` }),
     el('div', { class: 'row mt2', style: { justifyContent: 'center', gap: '.6rem' } },
@@ -164,6 +169,7 @@ const DIFF_FA = { casual: 'آسان', detective: 'کارآگاه', hardcore: 'س
   try {
     await loadConfig();
     State.loadProfile();
+    Sound.setSources(app.config.sounds); Sound.init(); Sound.mountControl();
     go(State.profile ? 'menu' : 'onboarding');
   } catch (err) {
     console.error(err);

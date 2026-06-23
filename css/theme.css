@@ -1,4 +1,14 @@
 /* ============================================================
+   FONTS — self-hosted, OFL. Estedad (display/headings) + Vazirmatn (body).
+   ============================================================ */
+@font-face { font-family:'Vazirmatn'; font-weight:400; font-display:swap; src:url('../assets/fonts/Vazirmatn-Regular.woff2') format('woff2'); }
+@font-face { font-family:'Vazirmatn'; font-weight:500; font-display:swap; src:url('../assets/fonts/Vazirmatn-Medium.woff2') format('woff2'); }
+@font-face { font-family:'Vazirmatn'; font-weight:700; font-display:swap; src:url('../assets/fonts/Vazirmatn-Bold.woff2') format('woff2'); }
+@font-face { font-family:'Estedad'; font-weight:500; font-display:swap; src:url('../assets/fonts/Estedad-FD-Medium.woff2') format('woff2'); }
+@font-face { font-family:'Estedad'; font-weight:700; font-display:swap; src:url('../assets/fonts/Estedad-FD-Bold.woff2') format('woff2'); }
+@font-face { font-family:'Estedad'; font-weight:900; font-display:swap; src:url('../assets/fonts/Estedad-FD-Black.woff2') format('woff2'); }
+
+/* ============================================================
    THEME TOKENS — three selectable visual styles.
    The selected theme sets [data-theme] on <html>; everything
    else reads these custom properties. Photos get a per-theme
@@ -7,6 +17,7 @@
 
 :root,
 :root[data-theme="noir"] {
+  --display:   "Estedad", "Vazirmatn", system-ui, sans-serif;
   --bg:        #0b0d10;
   --bg-2:      #12161c;
   --panel:     #14181e;

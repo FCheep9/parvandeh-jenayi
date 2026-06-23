@@ -7,6 +7,7 @@ import { Story } from '../engine/story.js';
 import { Investigation } from '../engine/investigation.js';
 import { Board } from '../engine/board.js';
 import { TwoP } from '../engine/twoplayer.js';
+import { Sound } from '../util/audio.js';
 
 let activeTab = 'story';
 
@@ -28,6 +29,7 @@ function badge(tab) {
 
 export function renderHub(app, root) {
   if (State.progress.phase === 'cinematic') { renderCinematic(app, root); return; }
+  Sound.scene('amb-booth');
 
   const hub = el('div', { class: 'hub grain' });
 
@@ -47,6 +49,7 @@ export function renderHub(app, root) {
     const b = badge(t.id);
     tabbar.append(el('button', {
       class: 'tab' + (activeTab === t.id ? ' active' : ''),
+      dataset: { tab: t.id },
       onclick: () => { setTab(t.id, app); },
     }, el('span', { text: t.label }), b ? el('span', { class: 'badge', text: '●' + b }) : null));
   }
@@ -110,48 +113,62 @@ function openNotebook(app) {
   app.modal(body);
 }
 
-// ---------------- Cinematic cold open ----------------
+// ---------------- Cinematic cold open (click/tap to advance) ----------------
 function renderCinematic(app, root) {
+  Sound.scene('amb-tension');
   const slides = State.caseData.meta.coldOpen || [{ text: '…' }];
-  let i = 0;
+  let i = 0, animating = false, raf = null;
   const cine = el('div', { class: 'cine' });
   const textEl = el('div', { class: 'cine-text' });
   const subEl = el('div', { class: 'cine-sub' });
   const canvas = el('canvas', { width: 640, height: 80 });
-  const skip = el('button', { class: 'btn btn-ghost btn-sm skip', text: 'رد کردن ◂', onclick: finish });
-  cine.append(textEl, subEl, canvas, skip);
+  const hint = el('div', { class: 'cine-hint', text: 'برای ادامه ضربه بزن' });
+  const skip = el('button', { class: 'btn btn-ghost btn-sm skip', text: 'رد کردن ◂', onclick: (e) => { e.stopPropagation(); finish(); } });
+  cine.append(textEl, subEl, canvas, hint, skip);
   mount(root, cine);
 
-  let timer = null;
   function drawCine(even) {
-    const ctx = canvas.getContext('2d'); const w = canvas.width, h = canvas.height, mid = h / 2;
-    ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = '#c8a14a'; ctx.globalAlpha = .8;
-    for (let x = 0; x < w; x += 3) {
-      const t = x / w;
-      const gap = even ? (Math.abs((t * 7) % 1 - 0.5) < 0.04) : (Math.sin(t * 50) > 0.96);
-      const a = gap ? 2 : (10 + Math.abs(Math.sin(t * (even ? 40 : 23) + (even ? 0 : t * 9))) * (h * 0.4));
-      ctx.beginPath(); ctx.moveTo(x, mid - a); ctx.lineTo(x, mid + a); ctx.stroke();
-    }
-    ctx.globalAlpha = 1;
+    cancelAnimationFrame(raf);
+    const ctx = canvas.getContext('2d'); if (!ctx) return;
+    const w = canvas.width, h = canvas.height, mid = h / 2;
+    let phase = 0;
+    const tick = () => {
+      phase += 0.04;
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = '#c8a14a'; ctx.globalAlpha = .8;
+      for (let x = 0; x < w; x += 3) {
+        const t = x / w;
+        const gap = even ? (Math.abs((t * 7) % 1 - 0.5) < 0.04) : (Math.sin(t * 50 + phase) > 0.96);
+        const a = gap ? 2 : (10 + Math.abs(Math.sin(t * (even ? 40 : 23) + (even ? phase * 0.5 : t * 9 + phase))) * (h * 0.4));
+        ctx.beginPath(); ctx.moveTo(x, mid - a); ctx.lineTo(x, mid + a); ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+      raf = requestAnimationFrame(tick);
+    };
+    tick();
   }
   function show() {
     const s = slides[i];
+    animating = true;
     textEl.style.opacity = 0; subEl.style.opacity = 0;
     setTimeout(() => {
       textEl.textContent = s.text || ''; subEl.textContent = s.sub || '';
-      textEl.style.transition = 'opacity .6s'; subEl.style.transition = 'opacity .6s';
+      textEl.style.transition = 'opacity .5s'; subEl.style.transition = 'opacity .5s';
       textEl.style.opacity = 1; subEl.style.opacity = 1;
-      drawCine(i >= slides.length - 2); // last two slides go "even/synthetic"
-    }, 250);
-    timer = setTimeout(() => { i++; (i < slides.length) ? show() : finish(); }, s.ms || 4200);
+      drawCine(i >= slides.length - 2);   // last two slides go "even/synthetic"
+      hint.textContent = (i >= slides.length - 1) ? 'برای ورود به پرونده ضربه بزن' : 'برای ادامه ضربه بزن';
+      animating = false;
+    }, 220);
   }
+  function next() { if (animating) return; i++; (i < slides.length) ? show() : finish(); }
   function finish() {
-    if (timer) clearTimeout(timer);
+    cancelAnimationFrame(raf);
     cine.remove();
+    Sound.scene('amb-booth');
     State.progress.phase = 'play'; State.saveProgress();
     activeTab = 'story';
     renderHub(app, root);
   }
+  cine.addEventListener('click', next);
   show();
 }

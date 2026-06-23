@@ -7,6 +7,7 @@ import { State } from '../state.js';
 import { el, mount } from '../util/dom.js';
 import { Board } from '../engine/board.js';
 import { diff } from '../engine/difficulty.js';
+import { Sound } from '../util/audio.js';
 
 // deterministic pseudo-random
 function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
@@ -40,33 +41,18 @@ function drawWave(canvas, { gaps, hum = 0, seed = 7 }) {
   for (const g of gaps) { ctx.fillRect(g * w - 1, h - 8, 2, 6); }
 }
 
-function playClip(even, hum) {
-  try {
-    const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
-    const ctx = new AC();
-    const now = ctx.currentTime;
-    const n = 6;
-    for (let i = 0; i < n; i++) {
-      const t = now + (even ? i * 0.32 : i * 0.32 + (Math.sin(i * 12.9) * 0.09)); // even vs jittered
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = 'triangle'; o.frequency.value = 180 + (even ? 0 : (i % 2) * 30);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.06, t + 0.04); g.gain.linearRampToValueAtTime(0, t + 0.18);
-      o.connect(g).connect(ctx.destination); o.start(t); o.stop(t + 0.2);
-    }
-    if (hum) { const o = ctx.createOscillator(), g = ctx.createGain(); o.frequency.value = 60; g.gain.value = 0.02; o.connect(g).connect(ctx.destination); o.start(now); o.stop(now + n * 0.34); }
-    setTimeout(() => ctx.close(), (n * 360) + 400);
-  } catch {}
-}
 
 const CLIPS = [
   {
-    id: 'archival', title: 'دلا واس — نسخه‌ی مادرِ بایگانی (سال گذشته)',
+    id: 'archival', title: 'دل‌آرا وثوقی — نسخه‌ی مادرِ بایگانی (سال گذشته)',
     gaps: [0.10, 0.26, 0.47, 0.61, 0.83], hum: 0, seed: 31,
+    voxText: 'شب از نیمه گذشته بود و شهر زیر باران نفس می‌کشید؛ او در را پشت سرش بست و چراغ را خاموش کرد.',
     truth: 'نفس‌های نامنظم — یک گوینده‌ی زنده. اینجا چیزی ناجور نیست.', anomaly: false,
   },
   {
-    id: 'new-release', title: 'دلا واس — انتشار «تازه» (این هفته)',
+    id: 'new-release', title: 'دل‌آرا وثوقی — انتشار «تازه» (این هفته)',
     gaps: [0.14, 0.29, 0.43, 0.57, 0.71, 0.85], hum: 1, seed: 99,
+    voxText: 'صبح که از راه رسید، هیچ‌کس نمی‌دانست دیشب در آن خانه‌ی ساکت دقیقاً چه گذشته است.',
     truth: 'نفس‌ها روی یک مترونومِ کاملاً منظم فرود می‌آیند و یک وزوزِ ثابتِ کم‌فرکانس زیرشان جریان دارد — هیچ گوینده‌ی زنده‌ای این‌طور نفس نمی‌کشد.',
     anomaly: true, clue: 'breaths-wrong',
   },
@@ -82,7 +68,7 @@ export function openWaveform(app) {
     const canvas = el('canvas', { class: 'wave-canvas' });
     row.append(
       el('h4', {}, el('span', { text: clip.title }),
-        el('button', { class: 'btn btn-sm btn-ghost', text: '▶ پخش', onclick: () => playClip(clip.id === 'new-release', clip.hum) })),
+        el('button', { class: 'btn btn-sm btn-ghost', text: '▶ پخش', onclick: () => Sound.playVox(clip.voxText || clip.title) })),
       canvas);
     if (clip.anomaly) {
       const have = Board.collected().includes(clip.clue);

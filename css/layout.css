@@ -19,9 +19,14 @@ button { font-family: inherit; }
 
 #app { min-height: 100vh; display: flex; flex-direction: column; }
 
+/* headings use the display face (Estedad) */
+h1, h2, h3, .hub-title > span:first-child, .cine-text, .card-title { font-family: var(--display); }
+h1, h2 { font-weight: 900; }
+h3, .card-title { font-weight: 700; }
+
 /* ---- generic screen ---- */
 .screen { flex: 1; display: flex; flex-direction: column; }
-.screen-pad { padding: clamp(1.2rem, 4vw, 3rem); }
+.screen-pad { padding: clamp(1.2rem, 4vw, 3rem); padding-bottom: 92px; }
 .center { align-items: center; justify-content: center; text-align: center; }
 .stack { display: flex; flex-direction: column; }
 .row { display: flex; gap: .75rem; align-items: center; }
@@ -71,7 +76,7 @@ button { font-family: inherit; }
 .tab.active { color: var(--ink); border-color: var(--line); background: var(--panel); }
 .tab .badge { margin-left: .35rem; font-family: var(--mono); font-size: .7rem; color: var(--accent); }
 
-.hub-body { flex: 1; padding: clamp(1rem, 3vw, 2rem); }
+.hub-body { flex: 1; padding: clamp(1rem, 3vw, 2rem); padding-bottom: 96px; }
 .hub-body .wrap-wide { display: block; }
 
 /* card grids for evidence/people/locations */

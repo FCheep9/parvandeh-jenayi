@@ -161,7 +161,7 @@ step('2P onboarding', () => {
   pn.value = 'دیوی'; pn.dispatchEvent(new window.Event('input'));
   clickSel('#app [data-action="begin"]');
   ok(State.profile.mode === '2p' && State.profile.partner.name === 'دیوی', '2P: profile saved with partner');
-  ok(State.profile.theme === 'noir' && State.profile.detective.name === 'مارا کوین', '2P: theme + detective auto-assigned');
+  ok(State.profile.theme === 'noir' && State.profile.detective.name === 'مهتاب کیانی', '2P: theme + detective auto-assigned');
 });
 
 console.log(`\n${failures ? '✗ ' + failures + ' FAILURE(S)' : '✓ ALL SMOKE CHECKS PASSED'}`);
