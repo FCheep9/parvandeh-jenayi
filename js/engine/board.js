@@ -19,7 +19,7 @@ export const Board = {
     if (this.collected().includes(id)) return false;
     this.collected().push(id);
     State.saveProgress();
-    if (app) app.toast(`Clue added to board: ${this.defs().clues[id].title}`);
+    if (app) app.toast(`سرنخ به تابلو افزوده شد: ${this.defs().clues[id].title}`);
     return true;
   },
 
@@ -49,7 +49,7 @@ export const Board = {
     if (c?.collectClue) this.collect(c.collectClue, null);
     if (c?.setFlag) State.flag(c.setFlag, true);
     State.saveProgress();
-    app.toast(`Deduction formed: ${c?.title || cid}`);
+    app.toast(`استنتاج شکل گرفت: ${c?.title || cid}`);
     if (app.onProgress) app.onProgress();
   },
 
@@ -67,7 +67,7 @@ export const Board = {
       this.render(app, container);
       // shake the cards briefly
       container.querySelectorAll('.clue').forEach(n => { n.classList.add('shake'); setTimeout(() => n.classList.remove('shake'), 400); });
-      app.toast("These don't connect — yet. Keep digging.");
+      app.toast('این دو به هم وصل نمی‌شوند — هنوز. کاوش را ادامه بده.');
     }
   },
 
@@ -79,23 +79,23 @@ export const Board = {
 
     // instructions
     wrap.append(el('p', { class: 'muted small',
-      text: 'Select two clues, then Connect. Real links form a deduction; a hunch that isn\'t supported won\'t.' }));
+      text: 'دو سرنخ انتخاب کن، بعد «اتصال» را بزن. پیوندهای واقعی یک استنتاج می‌سازند؛ حدسی که پشتوانه ندارد، نه.' }));
 
     // selection + connect bar
     const bar = el('div', { class: 'row mb' },
       el('button', {
-        class: 'btn btn-primary btn-sm', text: 'Connect selected',
+        class: 'btn btn-primary btn-sm', text: 'اتصال سرنخ‌های انتخابی', dataset: { action: 'connect' },
         disabled: selected.length !== 2,
         onclick: () => this.tryConnect(app, container),
       }),
-      selected.length ? el('button', { class: 'btn btn-ghost btn-sm', text: 'Clear',
+      selected.length ? el('button', { class: 'btn btn-ghost btn-sm', text: 'پاک کردن',
         onclick: () => { selected = []; this.render(app, container); } }) : null,
-      el('span', { class: 'muted small', text: `${selected.length}/2 selected` }));
+      el('span', { class: 'muted small', text: `انتخاب‌شده: ${selected.length}/۲` }));
     wrap.append(bar);
 
     // clue cards
     if (!collected.length) {
-      wrap.append(el('div', { class: 'empty', text: 'No clues yet. Examine evidence, interview people, and search locations — then "Add to board".' }));
+      wrap.append(el('div', { class: 'empty', text: 'هنوز سرنخی نیست. مدارک را بررسی کن، با اشخاص گفتگو کن و مکان‌ها را بگرد — بعد «افزودن به تابلو» را بزن.' }));
     } else {
       const grid = el('div', { class: 'board-cards' });
       for (const id of collected) {
@@ -103,6 +103,7 @@ export const Board = {
         const isSel = selected.includes(id);
         const card = el('div', {
           class: 'clue' + (isSel ? ' sel' : '') + (hintable.has(id) && !isSel ? ' hintable' : ''),
+          dataset: { clue: id },
           onclick: () => {
             if (isSel) selected = selected.filter(x => x !== id);
             else { selected.push(id); if (selected.length > 2) selected.shift(); }
@@ -121,7 +122,7 @@ export const Board = {
     const conc = this.conclusions();
     if (conc.length) {
       wrap.append(el('hr', { class: 'divider' }));
-      wrap.append(el('div', { class: 'label mb', text: 'Deductions' }));
+      wrap.append(el('div', { class: 'label mb', text: 'استنتاج‌ها' }));
       const cg = el('div', { class: 'conclusions' });
       for (const id of conc) {
         const c = d.conclusions[id]; if (!c) continue;

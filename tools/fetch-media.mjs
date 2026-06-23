@@ -10,13 +10,15 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 const OV = 'https://api.openverse.org/v1/images/';
 const LICENSES = 'cc0,pdm,by,by-sa';
 
-// ---- People (deterministic, reliable) -------------------------------------------------
+// ---- People (pixel-art portraits via DiceBear; deterministic, keyless, dark bg to stay in-tone)
+const DB = (seed) => `https://api.dicebear.com/9.x/pixel-art/svg?seed=${seed}&backgroundColor=141a22,1f2733&radius=6`;
 const people = {
-  della:  { portrait: 'https://randomuser.me/api/portraits/women/68.jpg' },
-  theo:   { portrait: 'https://randomuser.me/api/portraits/men/46.jpg' },
-  priya:  { portrait: 'https://randomuser.me/api/portraits/women/52.jpg' },
-  gareth: { portrait: 'https://randomuser.me/api/portraits/men/76.jpg' },
-  junie:  { portrait: 'https://randomuser.me/api/portraits/women/29.jpg' },
+  della:  { portrait: DB('della-voss-71') },
+  theo:   { portrait: DB('theo-marsh-eng') },
+  priya:  { portrait: DB('priya-anand-agent') },
+  gareth: { portrait: DB('gareth-vale-pub') },
+  junie:  { portrait: DB('junie-okafor-narrator') },
+  mara:   { portrait: DB('mara-quinn-di') },
 };
 
 // ---- Photo slots to fetch from Openverse ----------------------------------------------

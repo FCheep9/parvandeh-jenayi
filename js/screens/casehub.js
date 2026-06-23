@@ -11,11 +11,11 @@ import { TwoP } from '../engine/twoplayer.js';
 let activeTab = 'story';
 
 const TABS = [
-  { id: 'story', label: 'Story' },
-  { id: 'evidence', label: 'Evidence' },
-  { id: 'people', label: 'People' },
-  { id: 'locations', label: 'Locations' },
-  { id: 'board', label: 'Board' },
+  { id: 'story', label: 'داستان' },
+  { id: 'evidence', label: 'مدارک' },
+  { id: 'people', label: 'اشخاص' },
+  { id: 'locations', label: 'مکان‌ها' },
+  { id: 'board', label: 'تابلو' },
 ];
 
 function badge(tab) {
@@ -33,11 +33,11 @@ export function renderHub(app, root) {
 
   // header
   const header = el('div', { class: 'hub-header' },
-    el('div', { class: 'hub-title' }, el('span', { html: State.caseData.meta.title }), el('small', { text: State.caseData.meta.act_label || 'Act 1 — Prologue' })),
+    el('div', { class: 'hub-title' }, el('span', { html: State.caseData.meta.title }), el('small', { text: State.caseData.meta.act_label || 'پرده ۱' })),
     el('div', { class: 'spacer' }),
     State.caseData.meta.clock ? el('div', { class: 'clock', html: State.caseData.meta.clock }) : null,
     TwoP.roleChips(app),
-    el('button', { class: 'btn btn-sm btn-ghost', text: '✎ Notebook', onclick: () => openNotebook(app) }),
+    el('button', { class: 'btn btn-sm btn-ghost', text: '✎ دفترچه', onclick: () => openNotebook(app) }),
     el('button', { class: 'btn btn-sm btn-ghost', text: '☰', onclick: () => app.go('menu') }));
   hub.append(header);
 
@@ -91,20 +91,20 @@ function openNotebook(app) {
   const render = () => {
     const list = el('ul', { class: 'note-list' });
     const notes = State.progress.notebook;
-    if (!notes.length) list.append(el('li', { class: 'muted', text: 'No notes yet.' }));
+    if (!notes.length) list.append(el('li', { class: 'muted', text: 'هنوز یادداشتی نیست.' }));
     for (const n of notes) {
-      const who = n.by === 'advisor' ? 'Partner (advisor)' : n.by === 'partner' ? TwoP.partnerName() : 'You';
+      const who = n.by === 'advisor' ? 'همکار (مشاور)' : n.by === 'partner' ? TwoP.partnerName() : 'تو';
       list.append(el('li', { class: 'note-item' + (n.by === 'advisor' ? ' hint' : '') },
         el('div', { class: 'by', text: who }), el('div', { text: n.text })));
     }
-    const ta = el('textarea', { placeholder: TwoP.isTwoPlayer() ? `${TwoP.partnerName()}, log a suspicion or advice for the Lead…` : 'Jot a note…' });
+    const ta = el('textarea', { placeholder: TwoP.isTwoPlayer() ? `${TwoP.partnerName()}، یک ظن یا مشورت برای ارشد بنویس…` : 'یادداشتی بنویس…' });
     mount(body,
       el('div', { class: 'row mb', style: { justifyContent: 'space-between' } },
-        el('div', { class: 'label', text: 'Detective’s notebook' }),
-        el('button', { class: 'btn btn-ghost btn-sm', text: 'Close', onclick: () => app.closeModal() })),
+        el('div', { class: 'label', text: 'دفترچه‌ی کارآگاه' }),
+        el('button', { class: 'btn btn-ghost btn-sm', text: 'بستن', onclick: () => app.closeModal() })),
       list,
       el('div', { class: 'mt' }, ta,
-        el('button', { class: 'btn btn-primary mt', text: 'Add note', onclick: () => { TwoP.addPartnerNote(ta.value); render(); } })));
+        el('button', { class: 'btn btn-primary mt', text: 'افزودن یادداشت', onclick: () => { TwoP.addPartnerNote(ta.value); render(); } })));
   };
   render();
   app.modal(body);
@@ -118,7 +118,7 @@ function renderCinematic(app, root) {
   const textEl = el('div', { class: 'cine-text' });
   const subEl = el('div', { class: 'cine-sub' });
   const canvas = el('canvas', { width: 640, height: 80 });
-  const skip = el('button', { class: 'btn btn-ghost btn-sm skip', text: 'Skip ▸', onclick: finish });
+  const skip = el('button', { class: 'btn btn-ghost btn-sm skip', text: 'رد کردن ◂', onclick: finish });
   cine.append(textEl, subEl, canvas, skip);
   mount(root, cine);
 

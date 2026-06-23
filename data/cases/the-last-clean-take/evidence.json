@@ -1,66 +1,66 @@
 {
   "ev-me-note": {
     "id": "ev-me-note",
-    "name": "Medical examiner's field note",
+    "name": "یادداشت صحنه‌ی پزشک قانونی",
     "slot": "ev-me-note",
     "glyph": "🗎",
-    "summary": "First read of the scene.",
-    "description": "A page torn from the ME's pad, handed to you at the door.",
+    "summary": "اولین قرائت از صحنه.",
+    "description": "برگه‌ای کنده‌شده از دفترچه‌ی پزشک قانونی که دم در به دستت می‌دهند.",
     "notes": [
-      "Lividity <b>fixed in a pattern inconsistent</b> with how the body is posed in the booth.",
-      "Core/tissue readings flagged: <b>post-mortem interval inconsistent with the apparent scene</b>.",
-      "Plain words: the scene says she died here, last night. The body isn't so sure."
+      "کبودی نعشی <b>به الگویی ثابت شده که با وضعیت قرارگرفتن جسد در اتاقک ضبط نمی‌خواند</b>.",
+      "قرائت دمای مرکزی و بافت، نشانه‌گذاری شده: <b>فاصله‌ی زمانی پس از مرگ با صحنه‌ی ظاهری نمی‌خواند</b>.",
+      "به زبان ساده: صحنه می‌گوید او همین‌جا، دیشب مرده است. اما جسد آن‌قدرها مطمئن نیست."
     ],
     "clue": "pmi-wrong"
   },
   "ev-waveform": {
     "id": "ev-waveform",
-    "name": "The “new” release vs. an archival master",
+    "name": "نسخه‌ی «جدید» در برابر یک مَستر بایگانی",
     "slot": "",
     "glyph": "🎧",
-    "summary": "Two recordings of the same voice.",
-    "description": "Junie's words won't leave you: nobody breathes that evenly. Put the brand-new release up against a recording from last year and look for yourself.",
+    "summary": "دو ضبط از یک صدای واحد.",
+    "description": "حرف‌های جونی اوکافور دست از سرت برنمی‌دارند: هیچ‌کس این‌قدر یکنواخت نفس نمی‌کشد. نسخه‌ی تازه‌منتشرشده را کنار ضبطی از سال گذشته بگذار و خودت ببین.",
     "tool": "waveform"
   },
   "ev-insulin-pen": {
     "id": "ev-insulin-pen",
-    "name": "Della's insulin pen",
+    "name": "قلم انسولین دلا",
     "slot": "ev-insulin-pen",
     "glyph": "💉",
-    "summary": "Cap off. Recently used.",
-    "description": "A smart insulin pen from the booth desk.",
+    "summary": "سرپوش باز. تازه استفاده شده.",
+    "description": "یک قلم انسولین هوشمند از روی میز اتاقک ضبط.",
     "notes": [
-      "Della was Type-1 diabetic.",
-      "Dose log shows a <b>normal mealtime dose</b> — but the kitchen is untouched and a food delivery sat uncollected at her door.",
-      "Insulin for a meal she never reached: the makings of a slow, accidental low — not an overdose."
+      "دلا واس مبتلا به دیابت نوع ۱ بود.",
+      "گزارش دوز یک <b>دوز عادیِ هنگام غذا</b> را نشان می‌دهد — اما آشپزخانه دست‌نخورده است و یک سفارش غذا تحویل‌نگرفته دم در او مانده.",
+      "انسولینی برای وعده‌ای که هرگز به آن نرسید: مقدمات یک افت قند آهسته و تصادفی — نه یک اوردوز."
     ],
     "clue": "insulin-dose"
   },
   "ev-contract": {
     "id": "ev-contract",
-    "name": "Aldercrest contract",
+    "name": "قرارداد آلدرکرست",
     "slot": "ev-contract",
     "glyph": "📄",
-    "summary": "Tabbed to a single clause.",
-    "description": "Della's deal with Aldercrest Publishing, read so often the tab is worn soft.",
+    "summary": "نشانه‌گذاری‌شده روی یک بند واحد.",
+    "description": "قرارداد دلا واس با انتشارات آلدرکرست، آن‌قدر بارها خوانده شده که نشانگرش نرم و ساییده شده است.",
     "notes": [
-      "<b>Voice Continuation Rider.</b>",
-      "Deliver every title <i>while alive</i> → the synthetic-voice rights and a retirement clause stay with Della's estate (her written wish: <i>my voice dies when I do</i>).",
-      "Die <i>before</i> delivery is accepted → the rights revert to Aldercrest <b>in perpetuity</b>. Someone could make her read forever."
+      "<b>الحاقیه‌ی تداوم صدا.</b>",
+      "هر عنوان را <i>تا زمانی که زنده است</i> تحویل بدهد ← حقوق صدای مصنوعی و یک بند بازنشستگی نزد ورثه‌ی دلا می‌ماند (خواست مکتوب او: <i>صدای من با خودم می‌میرد</i>).",
+      "اگر <i>پیش از</i> پذیرش تحویل بمیرد ← حقوق <b>برای همیشه</b> به آلدرکرست بازمی‌گردد. یکی می‌توانست او را وادار کند تا ابد بخواند."
     ],
     "clue": "rights-rider"
   },
   "ev-harddrives": {
     "id": "ev-harddrives",
-    "name": "The master drives",
+    "name": "درایوهای مَستر",
     "slot": "ev-harddrives",
     "glyph": "💽",
-    "summary": "A folder modified this week.",
-    "description": "The wall of labeled master drives from the control room.",
+    "summary": "پوشه‌ای که این هفته ویرایش شده.",
+    "description": "دیوار درایوهای مَسترِ برچسب‌خورده از اتاق کنترل.",
     "notes": [
-      "Decades of Della's recorded masters, meticulously kept.",
-      "A folder — 'DELLA — NEW' — carries timestamps from <b>this week</b>, long after she supposedly stopped working.",
-      "Whatever 'new Della' is, it is being made <i>here</i>."
+      "دهه‌ها مَسترِ ضبط‌شده‌ی دلا واس، با وسواس نگهداری شده.",
+      "یک پوشه — «DELLA — NEW» — برچسب‌های زمانی <b>این هفته</b> را با خود دارد، مدت‌ها پس از آن‌که او گویا دست از کار کشیده بود.",
+      "این «دلای جدید» هرچه باشد، <i>همین‌جا</i> ساخته می‌شود."
     ]
   }
 }

@@ -18,7 +18,7 @@ export const Investigation = {
     const total = Object.keys(map).length;
     const wrap = el('div', {});
     if (!items.length) {
-      wrap.append(el('div', { class: 'empty', text: 'The evidence locker is empty. Follow the story to collect evidence.' }));
+      wrap.append(el('div', { class: 'empty', text: 'گنجه‌ی مدارک خالی است. داستان را دنبال کن تا مدرک جمع شود.' }));
     } else {
       const grid = el('div', { class: 'card-grid' });
       for (const it of items) {
@@ -28,12 +28,12 @@ export const Investigation = {
           el('div', { class: 'card-pad' },
             el('div', { class: 'row', style: { justifyContent: 'space-between' } },
               el('div', { class: 'card-title', text: it.name }),
-              examined ? el('span', { class: 'pill done', text: 'examined' }) : el('span', { class: 'pill', text: 'new' })),
+              examined ? el('span', { class: 'pill done', text: 'بررسی‌شده' }) : el('span', { class: 'pill', text: 'تازه' })),
             el('div', { class: 'card-sub', text: it.summary || '' })));
         grid.append(card);
       }
       wrap.append(grid);
-      if (items.length < total) wrap.append(el('p', { class: 'muted small mt', text: `${total - items.length} more piece(s) of evidence still to discover.` }));
+      if (items.length < total) wrap.append(el('p', { class: 'muted small mt', text: `${total - items.length} مدرک دیگر هنوز کشف نشده است.` }));
     }
     mount(container, wrap);
   },
@@ -42,22 +42,22 @@ export const Investigation = {
     if (!State.progress.examined.evidence.includes(it.id)) State.progress.examined.evidence.push(it.id);
     State.saveProgress();
     const body = el('div', { class: 'modal-pad' },
-      el('div', { class: 'label mb', text: 'Evidence' }),
+      el('div', { class: 'label mb', text: 'مدرک' }),
       el('h3', { text: it.name, style: { marginTop: 0 } }),
       Media.img(it.slot, { alt: it.name, glyph: it.glyph || '🗎', cls: '' }) ,
       ...paragraphs(it.description || it.summary || '', 'lead'),
-      it.notes?.length ? el('div', { class: 'label mt', text: 'Forensic notes' }) : null,
+      it.notes?.length ? el('div', { class: 'label mt', text: 'یادداشت‌های پزشکی‌قانونی' }) : null,
       it.notes?.length ? el('ul', { class: 'notes' }, ...it.notes.map(n => el('li', { html: n }))) : null);
 
     const actions = el('div', { class: 'row mt', style: { flexWrap: 'wrap' } });
     if (it.tool === 'waveform') {
-      actions.append(el('button', { class: 'btn', text: '🎧 Open waveform viewer',
+      actions.append(el('button', { class: 'btn', text: '🎧 باز کردن نمایشگر موج صوتی', dataset: { action: 'open-waveform' },
         onclick: () => { app.closeModal(); app.openWaveform(); } }));
     }
     if (it.clue) {
       const have = Board.collected().includes(it.clue);
-      actions.append(el('button', { class: 'btn btn-primary', text: have ? '✓ On the board' : '+ Add to board', disabled: have,
-        onclick: (e) => { Board.collect(it.clue, app); e.target.disabled = true; e.target.textContent = '✓ On the board'; } }));
+      actions.append(el('button', { class: 'btn btn-primary', dataset: { action: 'add-clue' }, text: have ? '✓ روی تابلو' : '+ افزودن به تابلو', disabled: have,
+        onclick: (e) => { Board.collect(it.clue, app); e.target.disabled = true; e.target.textContent = '✓ روی تابلو'; } }));
     }
     if (it.unlocks) {
       // examining can reveal more (e.g., a gated follow-up) — applied once
@@ -66,7 +66,7 @@ export const Investigation = {
         State.flag('ev-unlocked:' + it.id, true); State.saveProgress();
       }
     }
-    actions.append(el('button', { class: 'btn btn-ghost', text: 'Close', onclick: () => app.closeModal() }));
+    actions.append(el('button', { class: 'btn btn-ghost', text: 'بستن', onclick: () => app.closeModal() }));
     body.append(actions);
     app.modal(body);
   },
@@ -76,7 +76,7 @@ export const Investigation = {
     const map = State.caseData.people;
     const items = unlockedItems(map, 'people');
     const wrap = el('div', {});
-    if (!items.length) { mount(container, el('div', { class: 'empty', text: 'No one to interview yet.' })); return; }
+    if (!items.length) { mount(container, el('div', { class: 'empty', text: 'هنوز کسی برای مصاحبه نیست.' })); return; }
     const grid = el('div', { class: 'card-grid' });
     for (const p of items) {
       const done = State.progress.interviewed.includes(p.id);
@@ -86,7 +86,7 @@ export const Investigation = {
           el('div', {},
             el('div', { class: 'card-title', text: p.name }),
             el('div', { class: 'card-sub', text: p.role || '' }),
-            done ? el('span', { class: 'pill done', text: 'interviewed' }) : el('span', { class: 'pill', text: 'not interviewed' }))));
+            done ? el('span', { class: 'pill done', text: 'مصاحبه‌شده' }) : el('span', { class: 'pill', text: 'مصاحبه‌نشده' }))));
       grid.append(card);
     }
     mount(container, wrap.appendChild(grid) && wrap);
@@ -97,7 +97,7 @@ export const Investigation = {
     const map = State.caseData.locations;
     const items = unlockedItems(map, 'locations');
     const wrap = el('div', {});
-    if (!items.length) { mount(container, el('div', { class: 'empty', text: 'No locations to search yet.' })); return; }
+    if (!items.length) { mount(container, el('div', { class: 'empty', text: 'هنوز مکانی برای جست‌وجو نیست.' })); return; }
     const grid = el('div', { class: 'card-grid' });
     for (const loc of items) {
       const card = el('div', { class: 'card', onclick: () => this.openLocation(app, loc) },
@@ -114,20 +114,20 @@ export const Investigation = {
     const body = el('div', { class: 'modal-pad' });
     const render = () => {
       mount(body,
-        el('div', { class: 'label mb', text: 'Location' }),
+        el('div', { class: 'label mb', text: 'مکان' }),
         el('h3', { text: loc.name, style: { marginTop: 0 } }),
         Media.img(loc.slot, { alt: loc.name, glyph: '🏠' }),
         el('p', { class: 'muted', text: loc.description || loc.summary || '' }),
-        el('div', { class: 'label mt', text: 'Search the scene' }),
+        el('div', { class: 'label mt', text: 'صحنه را بگرد' }),
         hotspotList(),
-        el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'Close', onclick: () => app.closeModal() })));
+        el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'بستن', onclick: () => app.closeModal() })));
     };
     const hotspotList = () => {
       const list = el('div', { class: 'stack', style: { gap: '.5rem' } });
       for (const h of (loc.hotspots || [])) {
         const key = `${loc.id}:${h.id}`;
         const seen = State.progress.examined.hotspots.includes(key);
-        const btn = el('button', { class: 'opt', onclick: () => {
+        const btn = el('button', { class: 'opt', dataset: { hotspot: h.id }, onclick: () => {
           if (!seen) {
             State.progress.examined.hotspots.push(key);
             if (h.unlock) for (const [bucket, ids] of Object.entries(h.unlock)) State.unlock(bucket, ids);
@@ -138,10 +138,10 @@ export const Investigation = {
           render();
         } },
           el('h4', { text: (seen ? '✓ ' : '🔎 ') + h.label }),
-          seen ? el('p', { html: h.text }) : el('p', { class: 'muted', text: 'Examine…' }));
+          seen ? el('p', { html: h.text }) : el('p', { class: 'muted', text: 'بررسی…' }));
         list.append(btn);
       }
-      if (!(loc.hotspots || []).length) list.append(el('p', { class: 'muted', text: 'Nothing else stands out here.' }));
+      if (!(loc.hotspots || []).length) list.append(el('p', { class: 'muted', text: 'چیز دیگری اینجا به چشم نمی‌خورد.' }));
       return list;
     };
     render();

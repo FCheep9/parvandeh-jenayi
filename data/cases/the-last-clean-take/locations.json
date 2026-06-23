@@ -1,36 +1,80 @@
 {
   "loc-saltwire-ext": {
     "id": "loc-saltwire-ext",
-    "name": "Saltwire Audio — exterior",
+    "name": "استودیوی سالت‌وایر — نمای بیرونی",
     "slot": "loc-saltwire-ext",
-    "summary": "A converted row-house studio in the rain.",
-    "description": "Rain sheets off the steps of a narrow brick row-house. A boutique audiobook studio — and tonight, a wake.",
+    "summary": "یک خانه‌ردیفیِ تبدیل‌شده به استودیو، زیر باران.",
+    "description": "باران از پله‌های خانه‌ردیفیِ آجریِ باریک سرازیر می‌شود. یک استودیوی کتاب صوتیِ بوتیک — و امشب، یک مجلس ختم.",
     "hotspots": [
-      { "id": "plaque", "label": "The brass plaque", "text": "SALTWIRE AUDIO, tarnished bright at the edges. The lights are still on upstairs. Someone's working, even now." },
-      { "id": "step", "label": "The wet steps", "text": "No forced entry, no struggle out here. Whoever was here belonged here." }
+      {
+        "id": "plaque",
+        "label": "پلاک برنجی",
+        "text": "استودیوی سالت‌وایر، با لبه‌هایی که از فرسودگی برق افتاده‌اند. چراغ‌های طبقه‌ی بالا هنوز روشن‌اند. کسی، حتی همین حالا، مشغول کار است."
+      },
+      {
+        "id": "step",
+        "label": "پله‌های خیس",
+        "text": "هیچ نشانی از ورود به‌زور نیست، هیچ کشمکشی این بیرون رخ نداده. هر که اینجا بوده، به اینجا تعلق داشته."
+      }
     ]
   },
   "loc-booth": {
     "id": "loc-booth",
-    "name": "The vocal booth",
+    "name": "اتاقک ضبط صدا",
     "slot": "loc-booth",
-    "summary": "Where Della was found.",
-    "description": "Foam tiles, a hanging mic, a pop filter. The quietest room you've ever stood in — and the place they found her.",
+    "summary": "جایی که دلا را پیدا کردند.",
+    "description": "تایل‌های فومی، یک میکروفون آویزان، یک فیلتر پاپ. ساکت‌ترین اتاقی که تا به حال در آن ایستاده‌ای — و همان جایی که او را یافتند.",
     "hotspots": [
-      { "id": "chair", "label": "The reader's chair", "text": "Della — headphones still on, posed as if she drifted off mid-take. No struggle. No mark. Just… stopped.", "clue": "body-posed" },
-      { "id": "desk", "label": "The little desk", "text": "An insulin pen, cap off, beside a cold mug of tea.", "unlock": { "evidence": ["ev-insulin-pen"] } },
-      { "id": "mic", "label": "The hanging mic", "text": "Squared to the chair, pop filter dead-center. She was mid-chapter when it happened. Professionals don't leave a session like this on purpose." }
+      {
+        "id": "chair",
+        "label": "صندلیِ گوینده",
+        "text": "دلا — هنوز هدفون به سر، چنان نشسته که گویی وسط ضبط به خواب رفته. نه کشمکشی، نه نشانی. فقط… متوقف شد.",
+        "clue": "body-posed"
+      },
+      {
+        "id": "desk",
+        "label": "میز کوچک",
+        "text": "یک قلم انسولین، بی‌درپوش، کنار یک فنجان چای سرد.",
+        "unlock": {
+          "evidence": [
+            "ev-insulin-pen"
+          ]
+        }
+      },
+      {
+        "id": "mic",
+        "label": "میکروفون آویزان",
+        "text": "درست روبه‌روی صندلی، فیلتر پاپ دقیقاً در مرکز. وسط یک فصل بود که این اتفاق افتاد. حرفه‌ای‌ها یک جلسه را عمداً این‌طور رها نمی‌کنند."
+      }
     ]
   },
   "loc-control-room": {
     "id": "loc-control-room",
-    "name": "The control room",
+    "name": "اتاق کنترل",
     "slot": "loc-control-room",
-    "summary": "Monitors, a wall of drives, the contract.",
-    "description": "Two monitors, a mixing surface, and a wall of labeled hard drives — decades of a voice, catalogued.",
+    "summary": "نمایشگرها، دیواری از درایوها، و قرارداد.",
+    "description": "دو نمایشگر، یک کنسول میکس، و دیواری از هارد دیسک‌های برچسب‌خورده — چندین دهه از یک صدا، بایگانی‌شده.",
     "hotspots": [
-      { "id": "drives", "label": "The wall of master drives", "text": "Decades of Della's masters. One folder — 'DELLA — NEW' — was modified this week. Long after she supposedly stopped.", "unlock": { "evidence": ["ev-harddrives"] } },
-      { "id": "desk", "label": "A flagged contract folder", "text": "Tabbed and flagged to a single clause, as if someone read it again and again.", "unlock": { "evidence": ["ev-contract"] } }
+      {
+        "id": "drives",
+        "label": "دیوار درایوهای مستر",
+        "text": "چندین دهه از مسترهای دلا. یک پوشه — 'DELLA — NEW' — همین هفته تغییر داده شده. مدت‌ها پس از آن‌که گفته می‌شد دست از کار کشیده.",
+        "unlock": {
+          "evidence": [
+            "ev-harddrives"
+          ]
+        }
+      },
+      {
+        "id": "desk",
+        "label": "پوشه‌ی قرارداد نشانه‌گذاری‌شده",
+        "text": "زبانه‌گذاری و نشانه‌گذاری‌شده روی یک بند واحد، انگار کسی بارها و بارها آن را خوانده.",
+        "unlock": {
+          "evidence": [
+            "ev-contract"
+          ]
+        }
+      }
     ]
   }
 }

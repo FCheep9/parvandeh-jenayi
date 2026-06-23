@@ -1,57 +1,96 @@
 {
   "junie": {
     "id": "junie",
-    "name": "Junie Okafor",
-    "role": "Junior narrator · Della's protégé",
-    "intro": "Red-eyed, hugging a paper coffee cup. “You're the one who knew her voice, aren't you. From the books.”",
+    "name": "جونی اوکافور",
+    "role": "گوینده‌ی جوان · شاگرد دلا",
+    "intro": "چشمانش سرخ است و لیوان کاغذی قهوه را به سینه می‌فشارد. «تو همانی، نه؟ آن که صدایش را می‌شناخت. از کتاب‌ها.»",
     "dialogue": [
-      { "id": "j1", "topic": "How are you holding up?",
-        "line": "She taught me everything. She'd run my pickups at midnight just so I'd sound less scared. I keep waiting for her to walk in and fix my breathing." },
-      { "id": "j2", "topic": "Did you notice anything strange about the new books?", "press": true,
-        "line": "Can I tell you something stupid? The <i>breaths</i>. In the new books. Nobody breathes that evenly reading aloud. I thought I was grieving wrong. But you hear it too, don't you.",
-        "reveals": { "flag": "audio-thread" } },
-      { "id": "j3", "topic": "Where were you that night?",
-        "line": "Recording pickups, like always — I'm here at odd hours. My keycard's all over the logs. I know how that looks. I didn't do anything." }
+      {
+        "id": "j1",
+        "topic": "حالت چطور است؟",
+        "line": "همه‌چیز را به من یاد داد. نیمه‌شب پیکاپ‌هایم را تمرین می‌داد تا کمتر ترسیده به نظر برسم. هنوز منتظرم از در تو بیاید و نفس‌کشیدنم را درست کند."
+      },
+      {
+        "id": "j2",
+        "topic": "در کتاب‌های جدید چیز عجیبی به چشمت نخورد؟",
+        "press": true,
+        "line": "یک چیز احمقانه بگویم؟ آن <i>نفس‌ها</i>. در کتاب‌های جدید. هیچ‌کس موقع بلندخوانی این‌قدر یکنواخت نفس نمی‌کشد. فکر کردم دارم اشتباه سوگواری می‌کنم. اما تو هم می‌شنوی‌اش، نه؟",
+        "reveals": {
+          "flag": "audio-thread"
+        }
+      },
+      {
+        "id": "j3",
+        "topic": "آن شب کجا بودی؟",
+        "line": "داشتم پیکاپ ضبط می‌کردم، مثل همیشه — ساعت‌های عجیب‌وغریب اینجا هستم. ردِ کارت ورودم همه‌جای گزارش‌هاست. می‌دانم چه برداشتی می‌شود. من کاری نکردم."
+      }
     ]
   },
   "theo": {
     "id": "theo",
-    "name": "Theo Marsh",
-    "role": "Audio engineer · co-owner of Saltwire",
-    "intro": "Composed. Too composed. “She's finally resting. She'd been so tired.”",
+    "name": "تئو مارش",
+    "role": "مهندس صدا · مالک مشترک سالت‌وایر",
+    "intro": "آرام. زیادی آرام. «بالاخره آرام گرفت. خیلی خسته شده بود.»",
     "dialogue": [
-      { "id": "t1", "topic": "What happened to Della?",
-        "line": "Her heart, they think. She'd worked herself to the bone <i>finishing the series</i>. She wouldn't stop." },
-      { "id": "t2", "topic": "When did you last hear from her?", "press": true,
-        "line": "We talked all the time. She sent me notes just last week — little voice memos, you know how she was.",
-        "reveals": { "flag": "forged-checkins" } },
-      { "id": "t3", "topic": "Tell me about the new recordings.",
-        "line": "We finished what she started. It's what she <i>wanted</i>. Don't make it ugly." }
+      {
+        "id": "t1",
+        "topic": "چه بلایی سر دلا آمد؟",
+        "line": "گمان می‌کنند قلبش بوده. خودش را برای <i>تمام‌کردن مجموعه</i> از پا انداخته بود. دست نمی‌کشید."
+      },
+      {
+        "id": "t2",
+        "topic": "آخرین بار کِی ازش خبر داشتی؟",
+        "press": true,
+        "line": "مدام با هم حرف می‌زدیم. همین هفته‌ی پیش یادداشت فرستاد — پیام‌های صوتی کوچک، می‌دانی که چطور آدمی بود.",
+        "reveals": {
+          "flag": "forged-checkins"
+        }
+      },
+      {
+        "id": "t3",
+        "topic": "از ضبط‌های جدید برایم بگو.",
+        "line": "چیزی را که او شروع کرده بود تمام کردیم. این همان چیزی است که او <i>می‌خواست</i>. زشتش نکن."
+      }
     ]
   },
   "priya": {
     "id": "priya",
-    "name": "Priya Anand",
-    "role": "Della's literary & voice agent",
-    "intro": "She ends a call and turns, smooth as glass. “I'm handling the estate. Everything's in order.”",
+    "name": "پریا آناند",
+    "role": "نماینده‌ی ادبی و صوتی دلا",
+    "intro": "تماسش را قطع می‌کند و برمی‌گردد، صاف و صیقلی مثل شیشه. «من کارهای ماترک را به عهده دارم. همه‌چیز روبه‌راه است.»",
     "dialogue": [
-      { "id": "p1", "topic": "What's at stake with this release?",
-        "line": "The biggest launch of her career. Posthumous, now, I suppose. The numbers will be… enormous." },
-      { "id": "p2", "topic": "Tell me about the contract.", "press": true,
-        "line": "Standard terms. I really can't discuss the estate. Della knew exactly what she signed.",
-        "reveals": { "flag": "contract-dodge" } }
+      {
+        "id": "p1",
+        "topic": "این انتشار چه چیزی را به خطر می‌اندازد؟",
+        "line": "بزرگ‌ترین رونمایی دوران کاری‌اش. حالا گمانم پس از مرگ. ارقام… عظیم خواهند بود."
+      },
+      {
+        "id": "p2",
+        "topic": "درباره‌ی قرارداد برایم بگو.",
+        "press": true,
+        "line": "شرایط معمول. واقعاً نمی‌توانم درباره‌ی ماترک حرف بزنم. دلا دقیقاً می‌دانست چه چیزی را امضا می‌کند.",
+        "reveals": {
+          "flag": "contract-dodge"
+        }
+      }
     ]
   },
   "gareth": {
     "id": "gareth",
-    "name": "Gareth Vale (via assistant)",
-    "role": "Acquisitions director · Aldercrest Publishing",
-    "intro": "He's abroad; his assistant speaks for him, bright and rehearsed.",
+    "name": "گرت ویل (از طریق دستیار)",
+    "role": "مدیر خرید امتیاز · انتشارات آلدرکرست",
+    "intro": "او خارج از کشور است؛ دستیارش به‌جای او حرف می‌زند، سرزنده و از پیش‌آماده.",
     "dialogue": [
-      { "id": "g1", "topic": "Why hold the memorial-premiere now?",
-        "line": "[Assistant] Mr. Vale is at the Frankfurt book fair. He said the world should hear her one last time. The event's in thirty-six hours — he insisted." },
-      { "id": "g2", "topic": "Did Aldercrest doubt the new recordings?",
-        "line": "[Assistant] I — I really couldn't say. There was an internal note. Something about whether the dailies 'sounded like her.' I shouldn't have said that." }
+      {
+        "id": "g1",
+        "topic": "چرا همین حالا این رونمایی-یادبود را برگزار می‌کنید؟",
+        "line": "[دستیار] آقای ویل در نمایشگاه کتاب فرانکفورت هستند. گفتند دنیا باید یک بار دیگر صدایش را بشنود. مراسم تا سی‌وشش ساعت دیگر است — ایشان اصرار داشتند."
+      },
+      {
+        "id": "g2",
+        "topic": "آیا آلدرکرست به ضبط‌های جدید شک داشت؟",
+        "line": "[دستیار] من — واقعاً نمی‌توانم بگویم. یک یادداشت داخلی بود. چیزی درباره‌ی اینکه آیا برداشت‌های روزانه «صدایش شبیه خودش بود». نباید این را می‌گفتم."
+      }
     ]
   }
 }

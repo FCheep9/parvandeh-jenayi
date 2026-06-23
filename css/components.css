@@ -68,8 +68,8 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
 .opt .sw { width: 22px; height: 22px; border-radius: 4px; border: 1px solid rgba(255,255,255,.15); }
 
 /* tutorial callout */
-.callout { border-left: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 8%, var(--panel));
-  padding: .7rem .9rem; border-radius: 0 8px 8px 0; margin: 1rem 0; font-size: .92rem; color: var(--ink-dim); }
+.callout { border-inline-start: 3px solid var(--accent-2); background: color-mix(in srgb, var(--accent-2) 8%, var(--panel));
+  padding: .7rem .9rem; border-radius: 8px; margin: 1rem 0; font-size: .92rem; color: var(--ink-dim); }
 .callout .label { color: var(--accent-2); display: block; margin-bottom: .2rem; }
 
 /* requirement / gate hint */
@@ -137,6 +137,15 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); ou
 
 /* hr */
 .divider { border: 0; border-top: 1px solid var(--line); margin: 1.4rem 0; }
+
+/* Persian/RTL: letter-spacing & uppercase break cursive joining — neutralize them */
+[dir="rtl"] .kicker, [dir="rtl"] .label, [dir="rtl"] .who, [dir="rtl"] .clue-src,
+[dir="rtl"] .hub-title small, [dir="rtl"] .role-chip, [dir="rtl"] .pill,
+[dir="rtl"] .note-item .by, [dir="rtl"] .loading {
+  letter-spacing: normal; text-transform: none;
+}
+[dir="rtl"] .cine .skip { inset-inline-end: 24px; right: auto; }
+
 .muted { color: var(--muted); }
 .small { font-size: .85rem; }
 .tcenter { text-align: center; }

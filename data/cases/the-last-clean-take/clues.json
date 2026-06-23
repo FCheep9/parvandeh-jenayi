@@ -1,25 +1,62 @@
 {
   "clues": {
-    "body-posed":   { "id": "body-posed",   "title": "Body posed, no struggle",                 "src": "Location · Vocal booth",   "icon": "🪑" },
-    "pmi-wrong":    { "id": "pmi-wrong",    "title": "Death doesn't fit the scene",            "src": "Evidence · ME field note", "icon": "🕓" },
-    "breaths-wrong":{ "id": "breaths-wrong","title": "The “new” voice breathes like a machine", "src": "Audio forensics",          "icon": "🎧" },
-    "insulin-dose": { "id": "insulin-dose", "title": "Insulin for a meal she never ate",        "src": "Evidence · insulin pen",   "icon": "💉" },
-    "rights-rider": { "id": "rights-rider", "title": "Her voice reverts if she died first",      "src": "Evidence · contract",      "icon": "📄" }
+    "body-posed": {
+      "id": "body-posed",
+      "title": "جسد در حالت آراسته، بدون نشانه‌ای از درگیری",
+      "src": "Location · Vocal booth",
+      "icon": "🪑"
+    },
+    "pmi-wrong": {
+      "id": "pmi-wrong",
+      "title": "زمان مرگ با صحنه جور درنمی‌آید",
+      "src": "Evidence · ME field note",
+      "icon": "🕓"
+    },
+    "breaths-wrong": {
+      "id": "breaths-wrong",
+      "title": "صدای «جدید» مثل یک ماشین نفس می‌کشد",
+      "src": "Audio forensics",
+      "icon": "🎧"
+    },
+    "insulin-dose": {
+      "id": "insulin-dose",
+      "title": "انسولین برای وعده‌ای که هرگز نخورد",
+      "src": "Evidence · insulin pen",
+      "icon": "💉"
+    },
+    "rights-rider": {
+      "id": "rights-rider",
+      "title": "اگر او اول مرده باشد، حق صدایش بازمی‌گردد",
+      "src": "Evidence · contract",
+      "icon": "📄"
+    }
   },
   "links": [
-    { "pair": ["body-posed", "pmi-wrong"],    "conclusion": "staged-quiet" },
-    { "pair": ["breaths-wrong", "pmi-wrong"], "conclusion": "when-not-who" }
+    {
+      "pair": [
+        "body-posed",
+        "pmi-wrong"
+      ],
+      "conclusion": "staged-quiet"
+    },
+    {
+      "pair": [
+        "breaths-wrong",
+        "pmi-wrong"
+      ],
+      "conclusion": "when-not-who"
+    }
   ],
   "conclusions": {
     "staged-quiet": {
       "id": "staged-quiet",
-      "title": "The scene was staged quiet",
-      "text": "No struggle — and the time of death won't fit the room. She was placed here. Found, not died."
+      "title": "صحنه را بی‌سروصدا چیده‌اند",
+      "text": "هیچ نشانی از درگیری نیست — و زمان مرگ با این اتاق جور درنمی‌آید. او را اینجا گذاشته‌اند. پیدا شده، نه آنکه اینجا مرده باشد."
     },
     "when-not-who": {
       "id": "when-not-who",
-      "title": "Ask when, not who",
-      "text": "If the “new” recordings are fabricated and the death is older than the scene admits, the real question isn't who killed Della Voss. It's when she actually died."
+      "title": "بپرس کِی، نه چه‌کسی",
+      "text": "اگر ضبط‌های «جدید» جعلی‌اند و مرگ از آنچه صحنه نشان می‌دهد قدیمی‌تر است، پرسش اصلی این نیست که چه‌کسی دلا واس را کشته. این است که او واقعاً کِی مرده است."
     }
   }
 }

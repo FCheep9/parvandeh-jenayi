@@ -1,86 +1,178 @@
 {
   "meta": {
-    "title": "The Last Clean Take",
-    "act_label": "Act 1 — The Wrong Kind of Quiet",
-    "clock": "Premiere in <b>~36h</b>",
-    "logline": "A celebrated audiobook narrator, Della Voss, is found dead in her home studio the night before her biggest release. Everyone is grieving the new recordings playing at her memorial — but you knew that voice through the worst year of your life, and tonight it is wrong. Too even. Breaths like a metronome. Find out why, before they bury the truth with her.",
-    "protagonist_note": "In your worst year, her voice kept you company. Now you're not sure you can trust your own ear.",
+    "title": "آخرین برداشت تمیز",
+    "act_label": "پرده ۱ — سکوتِ ناجور",
+    "clock": "اکران تا <b>~۳۶ ساعت</b> دیگر",
+    "logline": "دلا واس، گوینده‌ی نامدار کتاب صوتی، شب پیش از بزرگ‌ترین انتشار کارش، مرده در استودیوی خانگی‌اش پیدا می‌شود. همه در سوگ نشسته‌اند و ضبط‌های تازه‌اش در مراسم یادبود پخش می‌شود — اما تو این صدا را در بدترین سال زندگی‌ات شناختی، و امشب چیزی در آن ناجور است. زیادی یکنواخت. نفس‌هایی مثل ضربان مترونوم. پیش از آنکه حقیقت را با او خاک کنند، بفهم چرا.",
+    "protagonist_note": "در بدترین سال عمرت، صدای او همدمت بود. حالا مطمئن نیستی بتوانی به گوش خودت اعتماد کنی.",
     "coldOpen": [
-      { "text": "For eighteen months, you fell asleep to her voice. Della Voss read you through the worst year of your life.", "ms": 4600 },
-      { "text": "Tonight the city is mourning her. And on every speaker, a brand-new recording plays.", "ms": 4400 },
-      { "text": "Warm. Familiar. Perfect.", "ms": 2800 },
-      { "text": "Too perfect. The breaths fall like a metronome.", "sub": "something is wrong", "ms": 4200 },
-      { "text": "Eleven weeks. Nobody noticed.", "sub": "— Case 01 · The Last Clean Take", "ms": 4400 }
+      {
+        "text": "هجده ماه، با صدای او به خواب می‌رفتی. دلا واس تو را از میان بدترین سال زندگی‌ات خواند و گذراند.",
+        "ms": 4600
+      },
+      {
+        "text": "امشب شهر در سوگ اوست. و از هر بلندگو، ضبطی کاملاً تازه پخش می‌شود.",
+        "ms": 4400
+      },
+      {
+        "text": "گرم. آشنا. بی‌نقص.",
+        "ms": 2800
+      },
+      {
+        "text": "زیادی بی‌نقص. نفس‌ها مثل ضربان مترونوم فرود می‌آیند.",
+        "sub": "چیزی ناجور است",
+        "ms": 4200
+      },
+      {
+        "text": "یازده هفته. هیچ‌کس متوجه نشد.",
+        "sub": "— پرونده‌ی ۰۱ · آخرین برداشت تمیز",
+        "ms": 4400
+      }
     ]
   },
   "acts": [
     {
       "id": "act1",
-      "title": "The Wrong Kind of Quiet",
+      "title": "سکوتِ ناجور",
       "beats": [
         {
           "id": "b1-arrival",
-          "act_label": "Act 1 · The Wrong Kind of Quiet",
-          "title": "Saltwire Audio",
+          "act_label": "پرده ۱ · سکوتِ ناجور",
+          "title": "استودیوی سالت‌وایر",
           "image": "loc-saltwire-ext",
-          "body": "Rain on the steps. Your badge chirps green at the door and — old habit now — you flinch.\n\nUpstairs, a wake. Della Voss, found in her own booth last night. “She just dropped,” a constable murmurs. “Heart, probably. Peaceful.”\n\nPeaceful. You hold onto that word the way you hold your breath. Then you go to see for yourself.",
-          "callout": "Open the <b>Locations</b> tab, enter the <b>vocal booth</b>, and tap the <b>reader's chair</b> to examine it.",
-          "unlock": { "locations": ["loc-saltwire-ext", "loc-booth"], "people": ["junie", "theo"] },
-          "require": { "type": "search", "target": "loc-booth:chair" },
-          "advise": ["Start in the booth. The chair is where they found her."]
+          "body": "باران بر پله‌ها می‌بارد. کارت شناسایی‌ات دمِ در سبز جیر می‌کشد و — حالا دیگر از سرِ عادت — یکه می‌خوری.\n\nطبقه‌ی بالا، یک مجلس ختم. دلا واس، که دیشب در اتاقک خودش پیدا شده. کنستابلی زیر لب می‌گوید: «همین‌طوری افتاد. لابد قلبش. آرام.»\n\nآرام. این کلمه را همان‌طور نگه می‌داری که نفست را حبس می‌کنی. بعد می‌روی تا خودت ببینی.",
+          "callout": "زبانه‌ی <b>مکان‌ها</b> را باز کن، وارد <b>اتاقک صداگیری</b> شو و روی <b>صندلی گوینده</b> ضربه بزن تا آن را بررسی کنی.",
+          "unlock": {
+            "locations": [
+              "loc-saltwire-ext",
+              "loc-booth"
+            ],
+            "people": [
+              "junie",
+              "theo"
+            ]
+          },
+          "require": {
+            "type": "search",
+            "target": "loc-booth:chair"
+          },
+          "advise": [
+            "از اتاقک شروع کن. صندلی همان‌جایی است که پیدایش کردند."
+          ]
         },
         {
           "id": "b2-the-ear",
-          "title": "The ear",
-          "body": "In the lounge, the mourners play her “new” work. The room weeps. You go still.\n\nYou know this voice. You know it better than your own. And something in it is wrong — too even, the breaths landing on a beat, like a clock pretending to be a person.\n\nMaybe it's grief. Maybe it's your bad ear, finally lying to you. Or maybe a frightened young woman by the door has noticed the same thing.",
-          "callout": "Open the <b>People</b> tab and interview <b>Junie</b>. Try the ⚡ pointed question.",
-          "require": { "type": "interview", "target": "junie" },
-          "advise": ["Junie hears it too. There's a way to <i>see</i> the wrongness, not just hear it."]
+          "title": "گوش",
+          "body": "در سالن انتظار، عزاداران کار «تازه»‌اش را پخش می‌کنند. اتاق به گریه می‌افتد. تو بی‌حرکت می‌مانی.\n\nاین صدا را می‌شناسی. بهتر از صدای خودت می‌شناسی‌اش. و چیزی در آن ناجور است — زیادی یکنواخت، نفس‌ها روی ضرب فرود می‌آیند، مثل ساعتی که ادای آدم را درمی‌آورد.\n\nشاید اندوه است. شاید گوشِ خرابت، بالاخره دارد به تو دروغ می‌گوید. یا شاید زن جوان هراسانی کنار در، همین چیز را شنیده باشد.",
+          "callout": "زبانه‌ی <b>اشخاص</b> را باز کن و با <b>جونی</b> مصاحبه کن. سؤال نیش‌دار ⚡ را امتحان کن.",
+          "require": {
+            "type": "interview",
+            "target": "junie"
+          },
+          "advise": [
+            "جونی هم آن را می‌شنود. راهی هست که این ناجوری را <i>ببینی</i>، نه فقط بشنوی."
+          ]
         },
         {
           "id": "b3-first-evidence",
-          "title": "The body isn't so sure",
-          "body": "The medical examiner catches you at the door and presses a torn page into your hand. She doesn't like what she's reading.\n\nThe scene says Della died here, last night, in her chair. The note says the body disagrees.",
-          "callout": "Open the <b>Evidence</b> tab, examine the <b>ME field note</b>, then press <b>+ Add to board</b> to keep the clue.",
-          "unlock": { "evidence": ["ev-me-note"], "locations": ["loc-control-room"] },
-          "require": { "type": "collect-clue", "target": "pmi-wrong" },
-          "advise": ["If the time of death won't fit the scene, the scene is a lie."]
+          "title": "جسد چندان مطمئن نیست",
+          "body": "پزشک قانونی دمِ در گیرت می‌اندازد و یک برگ پاره‌شده در دستت می‌چپاند. از آنچه می‌خواند خوشش نمی‌آید.\n\nصحنه می‌گوید دلا همین‌جا، دیشب، روی صندلی‌اش مرده. یادداشت می‌گوید جسد این را قبول ندارد.",
+          "callout": "زبانه‌ی <b>مدارک</b> را باز کن، <b>یادداشت میدانی پزشک قانونی</b> را بررسی کن، بعد <b>+ افزودن به تابلو</b> را بزن تا سرنخ را نگه داری.",
+          "unlock": {
+            "evidence": [
+              "ev-me-note"
+            ],
+            "locations": [
+              "loc-control-room"
+            ]
+          },
+          "require": {
+            "type": "collect-clue",
+            "target": "pmi-wrong"
+          },
+          "advise": [
+            "اگر زمان مرگ با صحنه جور درنمی‌آید، صحنه دروغ است."
+          ]
         },
         {
           "id": "b4-the-audio",
-          "title": "Look at the breathing",
-          "body": "You can't unhear it, so you decide to look at it. You pull the brand-new release and an archival master from last year and lay their waveforms side by side.\n\nA living reader breathes when their body demands it — ragged, human, never the same twice. A machine breathes on schedule.",
-          "callout": "In <b>Evidence</b>, open <b>“The new release vs. an archival master”</b>, study the two waveforms, and <b>flag</b> the one that's wrong.",
-          "unlock": { "evidence": ["ev-waveform"] },
-          "require": { "type": "collect-clue", "target": "breaths-wrong" },
-          "advise": ["The new clip's breaths are evenly spaced, with a constant hum beneath. No lungs do that."]
+          "title": "به نفس کشیدن نگاه کن",
+          "body": "نمی‌توانی نشنیده‌اش بگیری، پس تصمیم می‌گیری به آن نگاه کنی. انتشار کاملاً تازه و یک نسخه‌ی مادرِ بایگانی‌شده از سال پیش را بیرون می‌کشی و موج‌های صوتی‌شان را کنار هم می‌گذاری.\n\nگوینده‌ی زنده وقتی بدنش طلب کند نفس می‌کشد — بریده‌بریده، انسانی، هیچ‌وقت دو بار یکسان. ماشین سرِ وقت نفس می‌کشد.",
+          "callout": "در <b>مدارک</b>، <b>«انتشار تازه در برابر نسخه‌ی مادرِ بایگانی»</b> را باز کن، دو موج صوتی را وارسی کن و آن یکی را که ناجور است <b>نشان‌گذاری</b> کن.",
+          "unlock": {
+            "evidence": [
+              "ev-waveform"
+            ]
+          },
+          "require": {
+            "type": "collect-clue",
+            "target": "breaths-wrong"
+          },
+          "advise": [
+            "نفس‌های کلیپ تازه با فاصله‌ی یکسان‌اند، با یک وزوزِ ثابت در زیرشان. هیچ ریه‌ای این‌طور نمی‌کند."
+          ]
         },
         {
           "id": "b5-meet-others",
-          "title": "Everyone who loved her",
+          "title": "هر کسی که دوستش داشت",
           "image": "loc-control-room",
-          "body": "They orbit the booth like planets around a dead star.\n\n<b>Theo</b>, her engineer, says she's “finally resting” — that she worked herself to the bone <i>finishing the series</i>. <b>Priya</b>, her agent, talks about the “biggest launch of her career” and won't touch the contract. And the man who scheduled this whole memorial-premiere, <b>Gareth Vale</b>, is conveniently abroad — with the clock he set ticking down over your head.",
-          "callout": "Interview <b>Theo</b> (and the others, if you like). Keep an eye on the <b>clock</b> up top.",
-          "unlock": { "people": ["priya", "gareth"], "evidence": ["ev-contract"] },
-          "require": { "type": "interview", "target": "theo" },
-          "advise": ["Theo says she was 'finishing the series.' Finishing it — how, if she's gone?"]
+          "body": "مثل سیاره‌هایی دور یک ستاره‌ی مرده، گرد اتاقک می‌چرخند.\n\n<b>تئو</b>، مهندس صدایش، می‌گوید او «بالاخره دارد آرام می‌گیرد» — اینکه جان کند تا <i>مجموعه را تمام کند</i>. <b>پریا</b>، نماینده‌اش، از «بزرگ‌ترین عرضه‌ی دوران کاری‌اش» حرف می‌زند و دست به قرارداد نمی‌زند. و مردی که کل این یادبودِ-اکران را تنظیم کرده، <b>گرت ویل</b>، به‌طرز راحتی خارج از کشور است — با ساعتی که خودش کوک کرده و دارد بالای سرت تیک‌تاک می‌کند.",
+          "callout": "با <b>تئو</b> مصاحبه کن (و با بقیه هم، اگر دوست داشتی). حواست به <b>ساعت</b> بالای صفحه باشد.",
+          "unlock": {
+            "people": [
+              "priya",
+              "gareth"
+            ],
+            "evidence": [
+              "ev-contract"
+            ]
+          },
+          "require": {
+            "type": "interview",
+            "target": "theo"
+          },
+          "advise": [
+            "تئو می‌گوید او داشت «مجموعه را تمام می‌کرد». تمامش می‌کرد — چطور، اگر دیگر نیست؟"
+          ]
         },
         {
           "id": "b6-the-board",
-          "title": "Make the connection",
-          "body": "Back in the dark of your car, you lay the night out in front of you. Loose threads. A feeling. Feelings aren't evidence — but two facts that touch, that's something you can stand on.",
-          "callout": "Open the <b>Board</b>. Select two clues and press <b>Connect</b>. A hunch that isn't supported won't link — try until something does.",
-          "require": { "type": "conclusion", "target": "staged-quiet" },
-          "advise": ["A posed body and a time of death that won't fit the room — connect those two."]
+          "title": "پیوند را برقرار کن",
+          "body": "برگشته توی تاریکیِ ماشینت، شبِ گذشته را جلوی خودت پهن می‌کنی. رشته‌های پراکنده. یک حس. حس‌ها مدرک نیستند — اما دو واقعیت که به هم می‌رسند، آن چیزی است که می‌توانی رویش بایستی.",
+          "callout": "<b>تابلو</b> را باز کن. دو سرنخ انتخاب کن و <b>اتصال</b> را بزن. حدسی که پشتوانه نداشته باشد پیوند نمی‌خورد — آن‌قدر امتحان کن تا چیزی جور شود.",
+          "require": {
+            "type": "conclusion",
+            "target": "staged-quiet"
+          },
+          "advise": [
+            "جسدی که حالت‌دهی شده و زمان مرگی که با اتاق جور درنمی‌آید — این دو را به هم وصل کن."
+          ]
         },
         {
           "id": "b7-decision",
-          "title": "Your call",
-          "body": "The brass want this closed clean: a sick woman, a quiet heart, a tidy certificate before the premiere. All you have is a wrongness in your ear and a body that won't keep its story straight.\n\nThis is yours to decide.",
+          "title": "تصمیم با توست",
+          "body": "بالادستی‌ها می‌خواهند این پرونده تمیز بسته شود: زنی بیمار، قلبی که از کار افتاده، گواهی‌ای مرتب پیش از اکران. تنها چیزی که داری ناجوری‌ای در گوشت است و جسدی که داستانش را یکدست نگه نمی‌دارد.\n\nتصمیمش با توست.",
           "lead_only": true,
           "choices": [
-            { "id": "hold", "label": "Hold the scene as suspicious", "detail": "Trust the wrongness. It will cost you goodwill — and you can't fully explain it yet.", "setFlag": "heldScene", "advise": ["The Lead held the line. Good. Now we have to earn it."] },
-            { "id": "release", "label": "Release it as a natural death", "detail": "Cleaner. She was ill; the world will accept it. But you'll have to live with the breaths.", "setFlag": "heldScene", "flagValue": false, "advise": ["We let it go — but Junie's words won't let us."] }
+            {
+              "id": "hold",
+              "label": "صحنه را مشکوک نگه دار",
+              "detail": "به ناجوری اعتماد کن. به قیمت از دست دادن اعتبارت تمام می‌شود — و هنوز نمی‌توانی کاملاً توضیحش بدهی.",
+              "setFlag": "heldScene",
+              "advise": [
+                "کارآگاه ارشد پای حرفش ایستاد. خوب است. حالا باید لیاقتش را ثابت کنیم."
+              ]
+            },
+            {
+              "id": "release",
+              "label": "آن را مرگ طبیعی اعلام کن",
+              "detail": "تمیزتر. او بیمار بود؛ دنیا قبولش می‌کند. اما باید با آن نفس‌ها کنار بیایی.",
+              "setFlag": "heldScene",
+              "flagValue": false,
+              "advise": [
+                "رهایش کردیم — اما حرف‌های جونی رهایمان نمی‌کنند."
+              ]
+            }
           ]
         }
       ]

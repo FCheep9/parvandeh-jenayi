@@ -1,19 +1,22 @@
 {
   "people": {
     "della": {
-      "portrait": "https://randomuser.me/api/portraits/women/68.jpg"
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=della-voss-71&backgroundColor=141a22,1f2733&radius=6"
     },
     "theo": {
-      "portrait": "https://randomuser.me/api/portraits/men/46.jpg"
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=theo-marsh-eng&backgroundColor=141a22,1f2733&radius=6"
     },
     "priya": {
-      "portrait": "https://randomuser.me/api/portraits/women/52.jpg"
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=priya-anand-agent&backgroundColor=141a22,1f2733&radius=6"
     },
     "gareth": {
-      "portrait": "https://randomuser.me/api/portraits/men/76.jpg"
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=gareth-vale-pub&backgroundColor=141a22,1f2733&radius=6"
     },
     "junie": {
-      "portrait": "https://randomuser.me/api/portraits/women/29.jpg"
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=junie-okafor-narrator&backgroundColor=141a22,1f2733&radius=6"
+    },
+    "mara": {
+      "portrait": "https://api.dicebear.com/9.x/pixel-art/svg?seed=mara-quinn-di&backgroundColor=141a22,1f2733&radius=6"
     }
   },
   "slots": {

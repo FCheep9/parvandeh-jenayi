@@ -62,9 +62,9 @@ async function go(route, params) {
   } catch (err) {
     console.error(err);
     mount(root, el('div', { class: 'screen screen-pad center' },
-      el('div', { class: 'wrap-narrow' }, el('h2', { text: 'Something went wrong loading the case.' }),
+      el('div', { class: 'wrap-narrow' }, el('h2', { text: 'در بارگذاری پرونده مشکلی پیش آمد.' }),
         el('p', { class: 'muted', text: String(err.message || err) }),
-        el('button', { class: 'btn btn-primary mt', text: 'Reload', onclick: () => location.reload() }))));
+        el('button', { class: 'btn btn-primary mt', text: 'بارگذاری دوباره', onclick: () => location.reload() }))));
   }
 }
 
@@ -80,24 +80,24 @@ function renderMenu() {
   box.append(
     el('div', { class: 'kicker', text: 'Criminal Case' }),
     el('h1', { html: '<span class="fa">پرونده جنایی</span>', style: { fontSize: 'clamp(2.4rem,8vw,4rem)', margin: '.3rem 0' } }),
-    el('p', { class: 'muted', text: State.profile ? `Detective ${State.profile.detective.name} · ${cap(State.profile.difficulty)} · ${State.profile.mode === '2p' ? '2-player' : 'Solo'}` : '' }));
+    el('p', { class: 'muted', text: State.profile ? `کارآگاه ${State.profile.detective.name} · ${DIFF_FA[State.profile.difficulty] || ''} · ${State.profile.mode === '2p' ? 'دونفره' : 'تک‌نفره'}` : '' }));
 
   const actions = el('div', { class: 'stack mt2', style: { gap: '.6rem', maxWidth: '360px', margin: '2rem auto 0' } });
-  if (hasSave) actions.append(el('button', { class: 'btn btn-primary btn-block', text: '▸ Continue', onclick: () => go('play') }));
-  actions.append(el('button', { class: 'btn btn-block', text: hasSave ? 'Restart case' : '▸ Start the case', onclick: () => { if (hasSave) { State.resetProgress(app.config.firstCase); } go('intro'); } }));
-  actions.append(el('button', { class: 'btn btn-block', text: State.profile ? 'Change detective / theme' : 'Set up', onclick: () => go('onboarding') }));
-  actions.append(el('button', { class: 'btn btn-ghost btn-block', text: 'Credits & image sources', onclick: openCredits }));
+  if (hasSave) actions.append(el('button', { class: 'btn btn-primary btn-block', text: 'ادامه‌ی پرونده ◂', onclick: () => go('play') }));
+  actions.append(el('button', { class: 'btn btn-block', text: hasSave ? 'شروع دوباره‌ی پرونده' : 'شروع پرونده ◂', onclick: () => { if (hasSave) { State.resetProgress(app.config.firstCase); } go('intro'); } }));
+  actions.append(el('button', { class: 'btn btn-block', text: State.profile ? 'تنظیمات بازی' : 'تنظیم بازی', onclick: () => go('onboarding') }));
+  actions.append(el('button', { class: 'btn btn-ghost btn-block', text: 'منابع و دست‌اندرکاران', onclick: openCredits }));
   box.append(actions);
 
   // case list
-  box.append(el('hr', { class: 'divider mt2' }), el('div', { class: 'label mb', text: 'Case files' }));
+  box.append(el('hr', { class: 'divider mt2' }), el('div', { class: 'label mb', text: 'پرونده‌ها' }));
   const list = el('div', { class: 'stack', style: { gap: '.5rem', textAlign: 'left' } });
   for (const c of reg.cases) {
     list.append(el('div', { class: 'card', style: { cursor: c.playable ? 'pointer' : 'default' }, onclick: () => { if (c.playable) go('intro'); } },
       el('div', { class: 'card-pad' },
         el('div', { class: 'row', style: { justifyContent: 'space-between' } },
           el('div', { class: 'card-title', text: c.title }),
-          el('span', { class: 'pill' + (c.playable ? ' done' : ''), text: c.playable ? 'playable' : 'coming soon' })),
+          el('span', { class: 'pill' + (c.playable ? ' done' : ''), text: c.playable ? 'قابل بازی' : 'به‌زودی' })),
         el('div', { class: 'card-sub', text: c.logline }))));
   }
   box.append(list);
@@ -109,14 +109,14 @@ function renderIntro() {
   const m = State.caseData.meta;
   const screen = el('div', { class: 'screen screen-pad center grain' });
   const box = el('div', { class: 'wrap-narrow tcenter' },
-    el('div', { class: 'kicker', text: m.act_label || 'Case File 01' }),
+    el('div', { class: 'kicker', text: m.act_label || 'پرونده ۰۱' }),
     el('h1', { html: m.title, style: { fontSize: 'clamp(1.8rem,5vw,3rem)', margin: '.4rem 0 1rem' } }),
-    Media.img('loc-booth', { alt: 'Saltwire Audio', glyph: '🎙', cls: 'beat-img' }),
-    el('div', { class: 'beat-body mt', style: { textAlign: 'left' } }, ...paragraphs(m.logline, 'lead')),
-    el('p', { class: 'muted small', text: `You play ${State.profile?.detective?.name || 'Detective'}. ${m.protagonist_note || ''}` }),
+    Media.img('loc-booth', { alt: 'استودیوی سالت‌وایر', glyph: '🎙', cls: 'beat-img' }),
+    el('div', { class: 'beat-body mt', style: { textAlign: 'start' } }, ...paragraphs(m.logline, 'lead')),
+    el('p', { class: 'muted small', text: `نقش ${State.profile?.detective?.name || 'کارآگاه'} را بازی می‌کنی. ${m.protagonist_note || ''}` }),
     el('div', { class: 'row mt2', style: { justifyContent: 'center', gap: '.6rem' } },
-      el('button', { class: 'btn btn-primary', text: '▸ Begin', onclick: () => { State.resetProgress(app.config.firstCase); State.progress = State.freshProgress(); State.saveProgress(); go('play'); } }),
-      el('button', { class: 'btn btn-ghost', text: 'Back', onclick: () => go('menu') })));
+      el('button', { class: 'btn btn-primary', text: 'شروع ◂', onclick: () => { State.resetProgress(app.config.firstCase); State.progress = State.freshProgress(); State.saveProgress(); go('play'); } }),
+      el('button', { class: 'btn btn-ghost', text: 'بازگشت', onclick: () => go('menu') })));
   screen.append(box);
   mount(root, screen);
 }
@@ -126,15 +126,15 @@ function openCredits() {
   const body = el('div', { class: 'modal-pad' });
   const creds = Media.credits();
   const list = el('ul', { class: 'notes' });
-  list.append(el('li', { html: 'Character portraits: <b>randomuser.me</b> (free realistic portraits).' }));
+  list.append(el('li', { html: 'پرتره‌ی شخصیت‌ها: پیکسل‌آرت از <b>DiceBear</b> (سبک pixel-art، رایگان).' }));
   for (const c of creds) {
-    list.append(el('li', { html: `${c.title} — by ${c.creator} · ${c.license || ''} ${c.landing ? `· <a href="${c.landing}" target="_blank" rel="noopener">source</a>` : ''}` }));
+    list.append(el('li', { html: `${c.title} — اثرِ ${c.creator} · ${c.license || ''} ${c.landing ? `· <a href="${c.landing}" target="_blank" rel="noopener">منبع</a>` : ''}` }));
   }
   mount(body,
     el('div', { class: 'row mb', style: { justifyContent: 'space-between' } },
-      el('div', { class: 'label', text: 'Credits & image sources' }),
-      el('button', { class: 'btn btn-ghost btn-sm', text: 'Close', onclick: closeModal })),
-    el('p', { class: 'muted small', text: 'Photos fetched from the Openverse API (Creative Commons / public domain). Built with Claude Code.' }),
+      el('div', { class: 'label', text: 'منابع و دست‌اندرکاران' }),
+      el('button', { class: 'btn btn-ghost btn-sm', text: 'بستن', onclick: closeModal })),
+    el('p', { class: 'muted small', text: 'عکس‌ها از طریق API اوپن‌ورس (کریتیو کامنز / مالکیت عمومی) گرفته شده‌اند. ساخته‌شده با Claude Code.' }),
     list);
   modal(body);
 }
@@ -157,7 +157,7 @@ function toast(msg) {
   setTimeout(() => t.remove(), 3200);
 }
 
-function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
+const DIFF_FA = { casual: 'آسان', detective: 'کارآگاه', hardcore: 'سخت‌گیرانه' };
 
 // ---------------- boot ----------------
 (async function boot() {
@@ -167,6 +167,6 @@ function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
     go(State.profile ? 'menu' : 'onboarding');
   } catch (err) {
     console.error(err);
-    mount(root, el('div', { class: 'loading', text: 'Failed to start: ' + (err.message || err) }));
+    mount(root, el('div', { class: 'loading', text: 'خطا در اجرا: ' + (err.message || err) }));
   }
 })();

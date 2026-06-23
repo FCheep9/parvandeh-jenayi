@@ -63,7 +63,7 @@ ok(!!app && !!app.config, 'app booted and config loaded');
 const root = document.getElementById('app');
 
 // ---- onboarding renders without throwing ----
-try { renderOnboarding(app, root); ok(!!document.querySelector('.wizard'), 'onboarding wizard renders'); }
+try { renderOnboarding(app, root); ok(!!document.querySelector('[data-mode]'), 'onboarding (setup) screen renders'); }
 catch (e) { ok(false, 'onboarding render threw: ' + e.message); }
 
 // ---- start play ----
@@ -76,7 +76,7 @@ ok(continueDisabled(), 'Continue is gated before the requirement is met');
 // ---- B1: search the booth chair ----
 step('B1 arrival', () => {
   Investigation.openLocation(app, State.caseData.locations['loc-booth']);
-  clickByText('#modal-host', '.opt', "reader's chair");
+  clickSel('#modal-host [data-hotspot="chair"]');
   app.closeModal();
   ok(Board.collected().includes('body-posed'), 'examining the chair collected body-posed');
   app.showStory();
@@ -88,7 +88,7 @@ ok(beatId() === 'b2-the-ear', 'advanced to b2-the-ear');
 // ---- B2: interview Junie ----
 step('B2 the ear', () => {
   app.openDialogue('junie');
-  clickByText('#modal-host', '.opt', 'strange about the new books');
+  clickSel('#modal-host [data-node="j2"]');
   app.closeModal();
   ok(State.progress.interviewed.includes('junie'), 'Junie interviewed');
   app.showStory(); clickContinue();
@@ -98,7 +98,7 @@ ok(beatId() === 'b3-first-evidence', 'advanced to b3-first-evidence');
 // ---- B3: examine ME note + add to board ----
 step('B3 first evidence', () => {
   Investigation.openEvidence(app, State.caseData.evidence['ev-me-note']);
-  clickByText('#modal-host', 'button', 'Add to board');
+  clickSel('#modal-host [data-action="add-clue"]');
   app.closeModal();
   ok(Board.collected().includes('pmi-wrong'), 'pmi-wrong added to board');
   app.showStory(); clickContinue();
@@ -108,7 +108,7 @@ ok(beatId() === 'b4-the-audio', 'advanced to b4-the-audio');
 // ---- B4: waveform flag ----
 step('B4 the audio', () => {
   app.openWaveform();
-  clickByText('#modal-host', 'button', 'Flag this clip');
+  clickSel('#modal-host [data-action="flag-clip"]');
   app.closeModal();
   ok(Board.collected().includes('breaths-wrong'), 'breaths-wrong flagged onto board');
   app.showStory(); clickContinue();
@@ -126,9 +126,9 @@ ok(beatId() === 'b6-the-board', 'advanced to b6-the-board');
 // ---- B6: deduction board ----
 step('B6 the board', () => {
   app.setTab('board');
-  clickByText('#app', '.clue', 'Body posed');
-  clickByText('#app', '.clue', "Death doesn't fit");
-  clickByText('#app', 'button', 'Connect selected');
+  clickSel('#app [data-clue="body-posed"]');
+  clickSel('#app [data-clue="pmi-wrong"]');
+  clickSel('#app [data-action="connect"]');
   ok(Board.hasConclusion('staged-quiet'), 'formed conclusion staged-quiet');
   app.showStory(); clickContinue();
 });
@@ -136,7 +136,7 @@ ok(beatId() === 'b7-decision', 'advanced to b7-decision');
 
 // ---- B7: Lead decision ----
 step('B7 decision', () => {
-  clickByText('#app', '.opt', 'Hold the scene');
+  clickSel('#app [data-choice="hold"]');
 });
 ok(State.progress.phase === 'prologue-end', 'reached prologue-end after the Lead decision');
 ok(State.progress.flags.heldScene === true, 'heldScene flag recorded');
@@ -152,23 +152,16 @@ State.profile.activeRole = 'lead';
 ok(TwoP.canCommit() === true, '2P: Lead can commit');
 State.profile.mode = 'solo';
 
-// ---- 2-player onboarding path (the partner-setup the review flagged) ----
+// ---- 2-player onboarding path (single-screen setup) ----
 step('2P onboarding', () => {
-  renderOnboarding(app, root);                  // step 0: theme
-  clickByText('#app', 'button', 'Next');        // -> step 1: detective
-  const nameInput = document.querySelector('#app input[type="text"]');
-  ok(!!nameInput, '2P: detective name field present');
-  nameInput.value = 'Mara Quinn'; nameInput.dispatchEvent(new window.Event('input'));
-  clickByText('#app', 'button', 'Next');        // -> step 2: tone/difficulty
-  clickByText('#app', 'button', 'Next');        // -> step 3: players
-  clickByText('#app', '.opt', 'Two players');   // switch to 2P (renders partner fields)
-  const pn = document.querySelector('#app input[placeholder="Partner name"]');
+  renderOnboarding(app, root);
+  clickSel('#app [data-mode="2p"]');            // switch to 2P -> partner field appears
+  const pn = document.querySelector('#app [data-test="partner-name"]');
   ok(!!pn, '2P: partner name field appears');
-  pn.value = 'Devi'; pn.dispatchEvent(new window.Event('input'));
-  const pp = document.querySelector('#app .portrait-grid .portrait.pick');
-  if (pp) pp.click();                            // pick a partner portrait (was the null-deref risk)
-  clickByText('#app', 'button', 'Begin the case');
-  ok(State.profile.mode === '2p' && State.profile.partner.name === 'Devi', '2P: profile saved with partner');
+  pn.value = 'دیوی'; pn.dispatchEvent(new window.Event('input'));
+  clickSel('#app [data-action="begin"]');
+  ok(State.profile.mode === '2p' && State.profile.partner.name === 'دیوی', '2P: profile saved with partner');
+  ok(State.profile.theme === 'noir' && State.profile.detective.name === 'مارا کوین', '2P: theme + detective auto-assigned');
 });
 
 console.log(`\n${failures ? '✗ ' + failures + ' FAILURE(S)' : '✓ ALL SMOKE CHECKS PASSED'}`);
@@ -184,6 +177,12 @@ function clickByText(scope, sel, text) {
   const nodes = [...document.querySelectorAll(`${scope} ${sel}`)];
   const n = nodes.find(x => (x.textContent || '').toLowerCase().includes(text.toLowerCase()));
   if (!n) throw new Error(`no ${sel} matching "${text}" in ${scope}`);
+  n.click();
+  return n;
+}
+function clickSel(sel) {
+  const n = document.querySelector(sel);
+  if (!n) throw new Error(`no element matching "${sel}"`);
   n.click();
   return n;
 }

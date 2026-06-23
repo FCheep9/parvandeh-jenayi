@@ -60,14 +60,14 @@ function playClip(even, hum) {
 
 const CLIPS = [
   {
-    id: 'archival', title: 'Della Voss — archival master (last year)',
+    id: 'archival', title: 'دلا واس — نسخه‌ی مادرِ بایگانی (سال گذشته)',
     gaps: [0.10, 0.26, 0.47, 0.61, 0.83], hum: 0, seed: 31,
-    truth: 'Irregular breaths — a living reader. Nothing wrong here.', anomaly: false,
+    truth: 'نفس‌های نامنظم — یک گوینده‌ی زنده. اینجا چیزی ناجور نیست.', anomaly: false,
   },
   {
-    id: 'new-release', title: 'Della Voss — “new” release (this week)',
+    id: 'new-release', title: 'دلا واس — انتشار «تازه» (این هفته)',
     gaps: [0.14, 0.29, 0.43, 0.57, 0.71, 0.85], hum: 1, seed: 99,
-    truth: 'Breaths fall on a perfect metronome, and a constant low hum runs underneath — no living reader breathes like this.',
+    truth: 'نفس‌ها روی یک مترونومِ کاملاً منظم فرود می‌آیند و یک وزوزِ ثابتِ کم‌فرکانس زیرشان جریان دارد — هیچ گوینده‌ی زنده‌ای این‌طور نفس نمی‌کشد.',
     anomaly: true, clue: 'breaths-wrong',
   },
 ];
@@ -82,37 +82,38 @@ export function openWaveform(app) {
     const canvas = el('canvas', { class: 'wave-canvas' });
     row.append(
       el('h4', {}, el('span', { text: clip.title }),
-        el('button', { class: 'btn btn-sm btn-ghost', text: '▶ play', onclick: () => playClip(clip.id === 'new-release', clip.hum) })),
+        el('button', { class: 'btn btn-sm btn-ghost', text: '▶ پخش', onclick: () => playClip(clip.id === 'new-release', clip.hum) })),
       canvas);
     if (clip.anomaly) {
       const have = Board.collected().includes(clip.clue);
       const note = el('div', { class: 'wave-note' + (auto ? ' flag' : '') });
       if (auto) note.textContent = '⚑ ' + clip.truth;
-      else note.textContent = 'Compare the breath spacing with the archival clip above. See anything?';
+      else note.textContent = 'فاصله‌ی نفس‌ها را با کلیپ بایگانیِ بالا مقایسه کن. چیزی می‌بینی؟';
       row.append(note);
       row.append(el('button', {
-        class: 'btn btn-sm ' + (have ? '' : 'btn-primary'), text: have ? '✓ Flagged on the board' : '⚑ Flag this clip as suspicious', disabled: have,
+        class: 'btn btn-sm ' + (have ? '' : 'btn-primary'), dataset: { action: 'flag-clip' },
+        text: have ? '✓ روی تابلو نشان‌گذاری شد' : '⚑ این کلیپ را مشکوک نشان‌گذاری کن', disabled: have,
         style: { marginTop: '.6rem' },
         onclick: (e) => {
           Board.collect(clip.clue, app);
           State.flag('flagged-audio', true); State.saveProgress();
           if (app.onProgress) app.onProgress();
-          e.target.disabled = true; e.target.textContent = '✓ Flagged on the board';
+          e.target.disabled = true; e.target.textContent = '✓ روی تابلو نشان‌گذاری شد';
           note.classList.add('flag'); note.textContent = '⚑ ' + clip.truth;
         },
       }));
     } else {
-      row.append(el('div', { class: 'wave-note', text: auto ? clip.truth : 'A reference recording.' }));
+      row.append(el('div', { class: 'wave-note', text: auto ? clip.truth : 'یک ضبط مرجع.' }));
     }
     tool.append(row);
     requestAnimationFrame(() => drawWave(canvas, clip));
   }
 
   mount(body,
-    el('div', { class: 'label mb', text: 'Audio forensics' }),
-    el('h3', { text: 'Waveform comparison', style: { marginTop: 0 } }),
-    el('p', { class: 'muted small', text: 'Each vertical line is sound over time. The taller bursts are speech; the thin valleys are breaths.' }),
+    el('div', { class: 'label mb', text: 'تحلیل صوتی' }),
+    el('h3', { text: 'مقایسه‌ی موج صوتی', style: { marginTop: 0 } }),
+    el('p', { class: 'muted small', text: 'هر خط عمودی، صدا در طول زمان است. ستون‌های بلندتر گفتارند؛ دره‌های باریک، نفس‌ها.' }),
     tool,
-    el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'Close', onclick: () => app.closeModal() })));
+    el('div', { class: 'row mt' }, el('button', { class: 'btn btn-ghost', text: 'بستن', onclick: () => app.closeModal() })));
   app.modal(body);
 }

@@ -19,9 +19,9 @@
   --accent-2:  #6fb3c9;   /* cold cyan */
   --danger:    #c0524a;
   --good:      #6fae7a;
-  --serif:     ui-serif, Georgia, "Times New Roman", serif;
-  --mono:      ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --sans:      system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif:     "Vazirmatn", ui-serif, Georgia, "Times New Roman", serif;
+  --mono:      "Vazirmatn", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans:      "Vazirmatn", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius:    10px;
   --shadow:    0 10px 30px rgba(0,0,0,.45);
   --grain:     .05;

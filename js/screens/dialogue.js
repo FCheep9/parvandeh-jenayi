@@ -56,6 +56,7 @@ export function openDialogue(app, personId) {
       const hot = node.press && diff().contradictionHints;
       opts.append(el('button', {
         class: 'opt' + (hot ? ' sel' : ''),
+        dataset: { node: node.id },
         onclick: () => {
           if (!dstate.revealed.includes(node.id)) dstate.revealed.push(node.id);
           applyReveals(node.reveals, app);
@@ -64,15 +65,15 @@ export function openDialogue(app, personId) {
         },
       }, el('h4', { text: (node.press ? '⚡ ' : '') + node.topic })));
     }
-    if (!any) opts.append(el('p', { class: 'muted', text: 'Nothing more to ask right now. New evidence may open new questions.' }));
+    if (!any) opts.append(el('p', { class: 'muted', text: 'فعلاً چیز دیگری برای پرسیدن نیست. مدارک تازه ممکن است پرسش‌های تازه باز کنند.' }));
 
     mount(body,
       el('div', { class: 'row mb', style: { justifyContent: 'space-between' } },
         el('div', { class: 'person-row' }, Media.portrait(personId, { size: 56 }),
           el('div', {}, el('div', { class: 'card-title', text: p.name }), el('div', { class: 'card-sub', text: p.role || '' }))),
-        el('button', { class: 'btn btn-ghost btn-sm', text: 'Done', onclick: () => app.closeModal() })),
+        el('button', { class: 'btn btn-ghost btn-sm', text: 'تمام', onclick: () => app.closeModal() })),
       lines,
-      el('div', { class: 'label mt', text: 'Ask about' }),
+      el('div', { class: 'label mt', text: 'بپرس درباره‌ی' }),
       opts);
   };
 
@@ -87,5 +88,5 @@ function speaker(p, text) {
 }
 function askedBubble(text) {
   return el('div', { class: 'speaker', style: { flexDirection: 'row-reverse' } },
-    el('div', {}, el('div', { class: 'who', text: 'You' }), el('div', { class: 'bubble me', text: '“' + text + '”' })));
+    el('div', {}, el('div', { class: 'who', text: 'تو' }), el('div', { class: 'bubble me', text: '«' + text + '»' })));
 }
