@@ -59,6 +59,10 @@ async function go(route, params) {
     if (route === 'play') {
       await loadCase(app.config.firstCase);
       if (!State.loadProgress(State.caseId)) { State.progress = State.freshProgress(); State.saveProgress(); }
+      else if (State.progress.phase === 'prologue-end' && State.caseData.acts.length > 1) {
+        // legacy save that ended at the old Act-1 prologue → bridge into Act 2, keep clues/flags
+        State.progress.phase = 'play'; State.progress.actIndex = 1; State.progress.beatIndex = 0; State.saveProgress();
+      }
       document.documentElement.dataset.theme = State.profile?.theme || 'noir';
       return renderHub(app, root);
     }

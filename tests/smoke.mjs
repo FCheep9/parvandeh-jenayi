@@ -94,6 +94,12 @@ ok(State.flag('verdict') === 'true', 'correct accusation -> true verdict');
 ok(beatId() === 'prologue-end' || !!document.querySelector('#app .beat'), 'ending screen rendered');
 ok(State.hasSave('the-last-clean-take'), 'progress persisted');
 
+// ---- legacy save migration: an old Act-1 'prologue-end' save bridges into Act 2 ----
+State.resetProgress('the-last-clean-take');
+localStorage.setItem('pj:save:v1:the-last-clean-take', JSON.stringify({ ...State.freshProgress(), phase: 'prologue-end', actIndex: 0, beatIndex: 7 }));
+await app.go('play');
+ok(beatId() === 'a2-1', 'legacy prologue-end save resumes into Act 2 (got ' + beatId() + ')');
+
 console.log(`\n${failures ? '✗ ' + failures + ' FAILURE(S)' : '✓ ALL SMOKE CHECKS PASSED'}`);
 process.exit(failures ? 1 : 0);
 
