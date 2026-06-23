@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>پرونده جنایی — Criminal Case</title>
+  <meta name="description" content="An interactive fair-play detective game. Solo or 2-player." />
+  <style>
+    :root { --bg:#0b0d10; --ink:#e8e6e1; --muted:#8b8d93; --accent:#c8a14a; --line:#1c2026; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; height:100%; }
+    body {
+      background:
+        radial-gradient(1200px 600px at 70% -10%, #12161c, transparent),
+        radial-gradient(900px 500px at 0% 110%, #0e1318, transparent),
+        var(--bg);
+      color:var(--ink);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      display:flex; align-items:center; justify-content:center;
+      min-height:100%; padding:6vh 6vw; position:relative; overflow:hidden;
+    }
+    body::after { /* film grain */
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.05;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .wrap { max-width:720px; }
+    .kicker { letter-spacing:.4em; text-transform:uppercase; font-size:.72rem; color:var(--accent);
+      font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+    h1 { font-size:clamp(2.4rem,7vw,4.6rem); margin:.3rem 0 .2rem; line-height:1.02; font-weight:600; }
+    .fa { font-family: "Vazirmatn", Tahoma, sans-serif; direction:rtl; color:var(--accent); }
+    .tag { color:var(--muted); font-size:clamp(1rem,2.4vw,1.25rem); max-width:48ch; line-height:1.6; }
+    .rule { width:64px; height:2px; background:var(--accent); margin:1.6rem 0; opacity:.8; }
+    .status { margin-top:2.2rem; font-family: ui-monospace, Menlo, monospace; font-size:.85rem; color:var(--muted); }
+    .blink { color:var(--accent); animation:b 1.4s steps(2) infinite; }
+    @keyframes b { 50% { opacity:0; } }
+    .case { margin-top:2.4rem; border-top:1px solid var(--line); padding-top:1.2rem; }
+    .case h2 { font-size:.78rem; letter-spacing:.25em; text-transform:uppercase; color:var(--muted);
+      font-family: ui-monospace, Menlo, monospace; font-weight:500; margin:0 0 .4rem; }
+    .case p { margin:.2rem 0 0; color:var(--ink); opacity:.92; }
+    .case .sub { color:var(--muted); font-style:italic; }
+    a { color:var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="kicker">A fair-play detective game</div>
+    <h1><span class="fa">پرونده جنایی</span><br/>Criminal&nbsp;Case</h1>
+    <div class="rule"></div>
+    <p class="tag">Investigate the evidence. Interview the living. Connect the clues.
+      Play alone — or with a partner who sees everything, and advises, while you decide.</p>
+
+    <div class="case">
+      <h2>Case 01 — Loading</h2>
+      <p>The Last Clean Take</p>
+      <p class="sub">A narrator is found dead the night before her biggest release —
+        but the new recordings were made in a room that no longer exists.</p>
+    </div>
+
+    <p class="status">building case file <span class="blink">▮</span></p>
+  </main>
+</body>
+</html>
